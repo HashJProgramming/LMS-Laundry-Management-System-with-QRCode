@@ -1,4 +1,5 @@
 <?php
+    include_once 'setup.php';
     $database = 'lms_db';
     $db = new PDO('mysql:host=localhost;dbname='.$database, 'root', '');
 

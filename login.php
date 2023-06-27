@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Blank Page - Brand</title>
+    <title>Login</title>
+    <link rel="shortcut icon" href="assets/img/washing-clothes.gif" type="image/gif">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -15,19 +16,14 @@
 
 <body id="page-top">
     <div id="wrapper">
-        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion p-0" style="background: var(--bs-primary-text-emphasis);">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion p-0 toggled" style="background: var(--bs-primary-text-emphasis);">
             <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="index.php">
                     <div class="sidebar-brand-icon rotate-n-15"><img class="rounded-circle" src="assets/img/washing-clothes.gif" width="60" height="60"></div>
                     <div class="sidebar-brand-text mx-3"><span>Laundry<br>Mangement<br>System</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="far fa-credit-card"></i><span>New Transaction</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-user"></i><span>Customers</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-user"></i><span>Staff</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-table"></i><span>Queuing</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-table"></i><span>Sales</span></a></li>
+                   
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -63,11 +59,11 @@
                                         <div class="bs-icon-xl bs-icon-circle bs-icon-primary bs-icon my-4"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person">
                                                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"></path>
                                             </svg></div>
-                                        <form class="text-center" method="post">
-                                            <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+                                        <form class="text-center" action="functions/login.php" method="post">
+                                            <div class="mb-3"><input class="form-control" type="text" name="username" placeholder="Username"></div>
                                             <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password"></div>
                                             <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Login</button></div>
-                                            <p class="text-muted">Forgot your password?</p>
+                                            <p class="text-muted">Laundry Management System (QRCode)</p>
                                         </form>
                                     </div>
                                 </div>

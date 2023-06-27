@@ -1,0 +1,25 @@
+<?php
+include_once 'connection.php';
+
+// Get the form data
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+// Check if the user exists
+$sql = "SELECT * FROM users WHERE username = ?";
+$stmt = $db->prepare($sql);
+$stmt->execute([$username]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($user && password_verify($password, $user['password'])) {
+
+    session_start();
+    $_SESSION['username'] = $username;
+    $_SESSION['level'] = $user['level'];
+    $_SESSION['id'] = $user['id'];
+
+    header('location: ../index.php?message=success');
+} else {
+    // Show an error message
+    header('location: ../login.php?message=error');
+}
