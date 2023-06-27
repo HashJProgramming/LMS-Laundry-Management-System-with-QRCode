@@ -76,9 +76,6 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Staff</th>
-                                            <th>Fullname</th>
-                                            <th>Address</th>
-                                            <th>Contact No.</th>
                                             <th>Date Created</th>
                                             <th class="text-center">Option</th>
                                         </tr>
@@ -88,29 +85,9 @@
                                             <td>#1</td>
                                             <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">UStaff1</td>
                                             <td>Juanityo</td>
-                                            <td>ZDSPGC Pagadian</td>
-                                            <td>09123456789</td>
-                                            <td>2008/11/29</td>
                                             <td class="text-center"><a class="mx-1" href="profile-staff.php"><i class="far fa-eye" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
                                         </tr>
-                                        <tr>
-                                            <td>#2</td>
-                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">UStaffer</td>
-                                            <td>Juanito</td>
-                                            <td>ZDSPGC Pagadian</td>
-                                            <td>09123456789</td>
-                                            <td>2008/11/28</td>
-                                            <td class="text-center"><a class="mx-1" href="staff.php"><i class="far fa-eye" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>#3</td>
-                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">AStaff</td>
-                                            <td>Juanita</td>
-                                            <td>ZDSPGC Pagadian</td>
-                                            <td>09123456798</td>
-                                            <td>2008/11/29</td>
-                                            <td class="text-center"><a class="mx-1" href="staff.php"><i class="far fa-eye" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                        </tr>
+
                                     </tbody>
                                     <tfoot>
                                         <tr></tr>
@@ -139,22 +116,12 @@
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Username</strong></label><input class="form-control" type="text" placeholder="Address" name="address" required=""></div>
                         <div class="row">
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" placeholder="John" name="firstname" required=""></div>
-                            </div>
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" placeholder="Doe" name="lastname" required=""></div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
                                 <div class="mb-3"><label class="form-label" for="first_name"><strong>Password</strong></label><input class="form-control" type="password" name="password" placeholder="Password" required=""></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for="last_name"><strong>Re-type Password</strong></label><input class="form-control" type="password" name="re-password" placeholder="Re-type Password" required=""></div>
                             </div>
                         </div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Address</strong></label><input class="form-control" type="text" placeholder="Address" name="address" required=""></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Contact</strong>&nbsp;No.</label><input class="form-control" type="text" placeholder="Contact No." name="contact" minlength="11" maxlength="11" required=""></div>
                     </form>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
@@ -165,19 +132,11 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">UpdateStaff</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                    <h4 class="modal-title">Update Staff</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <form>
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Username</strong></label><input class="form-control" type="text" placeholder="Address" name="address" required=""></div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" placeholder="John" name="firstname" required=""></div>
-                            </div>
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" placeholder="Doe" name="lastname" required=""></div>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for="first_name"><strong>Confirm Password</strong></label><input class="form-control" type="password" name="password" placeholder="Password" required=""></div>
@@ -186,8 +145,6 @@
                                 <div class="mb-3"><label class="form-label" for="last_name"><strong>New Password</strong></label><input class="form-control" type="password" name="password" placeholder="New Password" required=""></div>
                             </div>
                         </div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Address</strong></label><input class="form-control" type="text" placeholder="Address" name="address" required=""></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Contact</strong>&nbsp;No.</label><input class="form-control" type="text" placeholder="Contact No." name="address" required="" minlength="11" maxlength="11"></div>
                     </form>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>

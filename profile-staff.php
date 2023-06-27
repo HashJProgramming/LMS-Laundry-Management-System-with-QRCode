@@ -9,7 +9,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Profile - Laundry Management System with QRCode</title>
-    <link rel="shortcut icon" href="assets/img/washing-clothes.gif" type="image/gif">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
@@ -112,25 +111,13 @@
                                             <form>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="username"><strong>Username</strong></label><input class="form-control" type="text" id="username" placeholder="user.name" name="username"></div>
+                                                        <div class="mb-3"><label class="form-label" for="username"><strong>Username</strong></label><input class="form-control" type="text" id="username" placeholder="user.name" name="username" readonly></div>
                                                     </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" id="first_name" placeholder="John" name="first_name"></div>
-                                                    </div>
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" id="last_name" placeholder="Doe" name="last_name"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3">
-                                                    <div class="mb-3"><label class="form-label" for="last_name"><strong>Address</strong></label><input class="form-control" type="text" id="last_name-1" placeholder="Address" name="address"></div>
-                                                    <div class="mb-3"><label class="form-label" for="last_name"><strong>Contact No.</strong></label><input class="form-control" type="text" id="last_name-2" placeholder="Contact" name="contact"></div>
-                                                </div>
-                                            </form><button class="btn btn-primary btn-sm" type="submit">Save Settings</button>
+                                                </div>  
+                                            </form>
                                         </div>
                                     </div>
-                                    <div class="card shadow"></div>
+                                    
                                 </div>
                             </div>
                         </div>

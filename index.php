@@ -307,19 +307,7 @@
                                 <optgroup label="Select Customer">
                                     <option value="12" selected="">Juanito</option>
                                 </optgroup>
-                            </select></div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Type</strong></label><select class="form-select" name="type">
-                                        <optgroup label="Select Type">
-                                            <option value="Whites" selected="">Whites</option>
-                                            <option value="Colored">Colored</option>
-                                            <option value="Blankets/Towels">Blankets/Towels</option>
-                                            <option value="Specialty">Specialty</option>
-                                        </optgroup>
-                                    </select></div>
-                            </div>
-                        </div>
+                            </select></div>                     
                     </form>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-target="#transaction-1" data-bs-toggle="modal">New Customer</button><button class="btn btn-primary" type="button">Save</button></div>
@@ -344,24 +332,13 @@
                         </div>
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Address</strong></label><input class="form-control" type="text" name="address" placeholder="Address" required=""></div>
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Contact No.</strong></label><input class="form-control" type="text" name="contact" placeholder="Contact" required="" minlength="11" maxlength="11"></div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Type</strong></label><select class="form-select" name="type">
-                                        <optgroup label="Select Type">
-                                            <option value="Whites" selected="">Whites</option>
-                                            <option value="Colored">Colored</option>
-                                            <option value="Blankets/Towels">Blankets/Towels</option>
-                                            <option value="Specialty">Specialty</option>
-                                        </optgroup>
-                                    </select></div>
-                            </div>
-                        </div>
                     </form>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-target="#transaction" data-bs-toggle="modal">Already Registered?</button><button class="btn btn-primary" type="button">Save</button></div>
             </div>
         </div>
     </div>
+
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/chart.min.js"></script>
