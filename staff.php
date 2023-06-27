@@ -112,8 +112,8 @@
                     <h4 class="modal-title">Create Staff</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Username</strong></label><input class="form-control" type="text" placeholder="Address" name="address" required=""></div>
+                    <form action="functions/add-staff.php" method="post">
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Username</strong></label><input class="form-control" type="text" placeholder="Username" name="username" required=""></div>
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for="first_name"><strong>Password</strong></label><input class="form-control" type="password" name="password" placeholder="Password" required=""></div>
@@ -122,9 +122,10 @@
                                 <div class="mb-3"><label class="form-label" for="last_name"><strong>Re-type Password</strong></label><input class="form-control" type="password" name="re-password" placeholder="Re-type Password" required=""></div>
                             </div>
                         </div>
-                    </form>
+                    
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>

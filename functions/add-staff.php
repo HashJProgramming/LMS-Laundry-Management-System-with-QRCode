@@ -1,9 +1,15 @@
 <?php
-include_once 'functions/connection.php';
+include_once 'connection.php';
 
 
 $username = $_POST['username'];
 $password = $_POST['password'];
+$repassword = $_POST['re-password'];
+
+if ($password != $repassword) {
+  echo "The passwords do not match.";
+  exit;
+}
 
 $sql = "SELECT * FROM users WHERE username = :username";
 $stmt = $db->prepare($sql);
