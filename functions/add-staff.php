@@ -7,8 +7,8 @@ $password = $_POST['password'];
 $repassword = $_POST['re-password'];
 
 if ($password != $repassword) {
-  echo "The passwords do not match.";
-  exit;
+    header('Location: ../staff.php?type=error&message=The two passwords do not match');
+    exit;
 }
 
 $sql = "SELECT * FROM users WHERE username = :username";
@@ -17,8 +17,8 @@ $stmt->bindParam(':username', $username);
 $stmt->execute();
 
 if ($stmt->rowCount() > 0) {
-  echo "The username already exists.";
-  exit;
+    header('Location: ../staff.php?type=error&message=The username is already taken');
+    exit;
 }
 
 $password = password_hash($password, PASSWORD_DEFAULT);
@@ -31,6 +31,6 @@ $stmt->bindParam(':password', $password);
 $stmt->execute();
 
 // Redirect the user to the login page
-header('Location: ../index.php');
+header('Location: ../staff.php?type=success&message=The user was added successfully');
 
 ?>
