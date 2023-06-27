@@ -81,13 +81,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>#1</td>
-                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">UStaff1</td>
-                                            <td>Juanityo</td>
-                                            <td class="text-center"><a class="mx-1" href="profile-staff.php"><i class="far fa-eye" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                        </tr>
-
+                                        <?php
+                                            include_once 'functions/views/staff.php';
+                                        ?>
                                     </tbody>
                                     <tfoot>
                                         <tr></tr>
@@ -136,19 +132,21 @@
                     <h4 class="modal-title">Update Staff</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Username</strong></label><input class="form-control" type="text" placeholder="Address" name="address" required=""></div>
+                    <form action="functions/update-staff.php" method="post">
+                        <input type="hidden" name="data_id">
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Username</strong></label><input class="form-control" type="text" placeholder="Username" name="username" required="" readonly></div>
                         <div class="row">
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for="first_name"><strong>Confirm Password</strong></label><input class="form-control" type="password" name="password" placeholder="Password" required=""></div>
+                                <div class="mb-3"><label class="form-label" for="first_name"><strong>Password</strong></label><input class="form-control" type="password" name="password" placeholder="Password" required=""></div>
                             </div>
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" for="last_name"><strong>New Password</strong></label><input class="form-control" type="password" name="password" placeholder="New Password" required=""></div>
+                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Re-type Password</strong></label><input class="form-control" type="password" name="newpassword" placeholder="Re-type Password" required=""></div>
                             </div>
                         </div>
-                    </form>
+                    
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -159,9 +157,12 @@
                     <h4 class="modal-title">Remove Cusotmer</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
+                    <form action="functions/remove-staff.php" method="post">
+                        <input type="hidden" name="data_id">
                     <p>Are you sure you want to remove this customer?</p>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="button">Remove</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Remove</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -180,15 +181,31 @@
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/sweetalert.min.js"></script>
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const type = urlParams.get('type');
-        const message = urlParams.get('message');
-        if (type == 'success') {
-            swal("Success!", message, "success");
-        } else if (type == 'error') {
-            swal("Error!", message, "error");
-        }
-        
+
+        $(document).ready(function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const type = urlParams.get('type');
+            const message = urlParams.get('message');
+            if (type == 'success') {
+                swal("Success!", message, "success");
+            } else if (type == 'error') {
+                swal("Error!", message, "error");
+            }
+
+            $('a[data-bs-target="#update"]').on('click', function() {
+                var id = $(this).data('id');
+                var username = $(this).data('username');
+                console.log(id, username);
+                $('input[name="data_id"]').val(id);
+                $('input[name="username"]').val(username);
+
+            });
+            $('a[data-bs-target="#remove"]').on('click', function() {
+                var id = $(this).data('id');
+                console.log(id); // Add this line
+                $('input[name="data_id"]').val(id);
+            });
+        })
     </script>
 </body>
 
