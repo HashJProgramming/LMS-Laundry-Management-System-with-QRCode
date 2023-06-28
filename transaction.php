@@ -1,6 +1,17 @@
 <?php
     include_once 'functions/authentication.php';
     include_once 'functions/views/get-data.php';
+
+   foreach  (get_transaction($_SESSION['id']) as $row) {
+        $id = $row['id'];
+        $fullname = $row['fullname'];
+        $name = explode(' ', $fullname);
+        $firstname = $name[0];
+        $lastname = $name[1];
+
+        $address = $row['address'];
+        $contact = $row['contact'];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -75,14 +86,14 @@
                             <form>
                                 <div class="row">
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" id="first_name" placeholder="John" name="first_name" readonly=""></div>
+                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" id="first_name" placeholder="John" name="first_name" readonly="" value="<?php echo $firstname ?>"></div>
                                     </div>
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" id="last_name" placeholder="Doe" name="last_name" readonly=""></div>
+                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" id="last_name" placeholder="Doe" name="last_name" readonly="" value="<?php echo $lastname ?>"></div>
                                     </div>
                                 </div>
-                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Address</strong></label><input class="form-control" type="text" placeholder="Address" name="address" readonly=""></div>
-                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Contact</strong></label><input class="form-control" type="text" placeholder="Contact" name="address" readonly=""></div>
+                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Address</strong></label><input class="form-control" type="text" placeholder="Address" name="address" readonly="" value="<?php echo $address ?>"></div>
+                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Contact</strong></label><input class="form-control" type="text" placeholder="Contact" name="address" readonly="" value="<?php echo $contact ?>"></div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Kg/Kilo</strong></label><input class="form-control" type="number" id="first_name-1" placeholder="Kg/Kilogram" name="kilo"></div>
@@ -115,20 +126,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>#1</td>
-                                            <td>Downy</td>
-                                            <td>1</td>
-                                            <td>2008/11/29</td>
-                                            <td class="text-center"><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>#2</td>
-                                            <td>Tide Powder</td>
-                                            <td>1</td>
-                                            <td>2008/11/28</td>
-                                            <td class="text-center"><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                        </tr>
+                                        <?php include_once 'functions/views/products.php' ?>
                                     </tbody>
                                     <tfoot>
                                         <tr></tr>
@@ -153,38 +151,18 @@
                     <h4 class="modal-title">Add Item</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item</strong></label><select class="form-select">
+                    <form action="functions/add-product.php" method="post">
+                        <input type="hidden" name="id" value="<?php echo $id?>">
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item</strong></label><select class="form-select" name="item">
                                 <optgroup label="Select Item">
-                                    <option value="12" selected="">Downy</option>
-                                    <option value="Tide Powder">This is item 2</option>
+                                    <?php items_list() ?>
                                 </optgroup>
                             </select></div>
                         <div class="mb-3"><label class="form-label"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Qty"></div>
-                    </form>
+                   
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Add</button></div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="update">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Update Item</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item</strong></label><select class="form-select">
-                                <optgroup label="Select Item">
-                                    <option value="12" selected="">Downy</option>
-                                    <option value="Tide Powder">This is item 2</option>
-                                </optgroup>
-                            </select></div>
-                        <div class="mb-3"><label class="form-label"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Qty"></div>
-                    </form>
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Add</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -197,7 +175,10 @@
                 <div class="modal-body">
                     <p>Are you sure you want to remove this item?</p>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="button">Remove</button></div>
+                <form action="functions/remove-product.php" method="post">
+                    <input type="hidden" name="data_id">
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Remove</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -255,7 +236,12 @@
         } else if (type == 'error') {
             swal("Error!", message, "error");
         }
-        
+
+        $('a[data-bs-target="#remove"]').on('click', function() {
+                var id = $(this).data('id');
+                console.log(id); 
+                $('input[name="data_id"]').val(id);
+            });
     </script>
 </body>
 

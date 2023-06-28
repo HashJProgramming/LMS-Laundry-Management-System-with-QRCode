@@ -18,7 +18,7 @@ function customer_list (){
 
 function items_list (){
     global $db;
-    $sql = 'SELECT * FROM items ORDER BY name ASC';
+    $sql = 'SELECT * FROM items WHERE stock > 0 ORDER BY name ASC';
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll();
@@ -26,7 +26,7 @@ function items_list (){
     foreach ($results as $row) {
     $name = $row['name'];
     ?>
-        <option value="<?php echo $row['id']; ?>"><?php echo $name; ?></option>
+        <option value="<?php echo $row['id']; ?>"><?php echo $name; ?> | Qty: <?php echo $row['stock']; ?></option>
     <?php
     }
 }
@@ -45,4 +45,17 @@ function price_list (){
         <option value="<?php echo $row['id']; ?>"><?php echo $name; ?> | ₱<?php echo $row['price']; ?></option>
     <?php
     }
+}
+
+function get_transaction ($id){
+    global $db;
+    $sql = 'SELECT t.id, c.fullname, c.address, c.contact
+            FROM transactions AS t
+            JOIN customers AS c ON t.customer_id = c.id
+            WHERE t.status = 0;
+            ';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $results = $stmt->fetchAll();
+    return $results;
 }

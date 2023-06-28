@@ -66,7 +66,8 @@
           CREATE TABLE IF NOT EXISTS logs (
             id INT PRIMARY KEY AUTO_INCREMENT,
             user_id int,
-            details TEXT,
+            logs TEXT,
+            type TEXT,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (user_id) REFERENCES users(id)
         )
@@ -79,7 +80,6 @@
               item_id INT,
               transaction_id INT,
               qty INT,
-              total DOUBLE,
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
               FOREIGN KEY (user_id) REFERENCES users(id),
               FOREIGN KEY (item_id) REFERENCES items(id),
