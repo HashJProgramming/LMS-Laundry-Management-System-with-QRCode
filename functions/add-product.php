@@ -17,6 +17,17 @@ if ($qty <= 0){
     exit();
 }
 
+$sql = "SELECT * FROM transactions WHERE id = :id";
+$stmt = $db->prepare($sql);
+$stmt->bindParam(':id', $transaction_id);
+$stmt->execute();
+$results = $stmt->fetchAll();
+
+if (count($results) <= 0) {
+    header('Location: ../transaction.php?type=error&message=You have no transaction yet!');
+    exit();
+}
+
 $sql = "SELECT * FROM expenditures WHERE transaction_id = :transaction_id AND item_id = :item_id";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':transaction_id', $transaction_id);

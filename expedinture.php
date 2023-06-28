@@ -73,46 +73,15 @@
                                     <thead>
                                         <tr>
                                             <th>ID #</th>
+                                            <th>Transaction ID</th>
                                             <th>Item</th>
                                             <th>Qty</th>
-                                            <th>Total</th>
+                                            <th>User</th>
                                             <th>Date</th>
-                                            <th>Staff</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>#1</td>
-                                            <td>Downy</td>
-                                            <td>10</td>
-                                            <td>10</td>
-                                            <td>2008/11/29</td>
-                                            <td>Administrator</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#1</td>
-                                            <td>Downy</td>
-                                            <td>10</td>
-                                            <td>10</td>
-                                            <td>2008/11/29</td>
-                                            <td>Administrator</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#1</td>
-                                            <td>Downy</td>
-                                            <td>10</td>
-                                            <td>10</td>
-                                            <td>2008/11/29</td>
-                                            <td>Administrator</td>
-                                        </tr>
-                                        <tr>
-                                            <td>#1</td>
-                                            <td>Downy</td>
-                                            <td>10</td>
-                                            <td>10</td>
-                                            <td>2008/11/29</td>
-                                            <td>Administrator</td>
-                                        </tr>
+                                        <?php include_once 'functions/views/expenditure.php'; ?>
                                     </tbody>
                                     <tfoot>
                                         <tr></tr>

@@ -2,7 +2,8 @@
     include_once 'functions/authentication.php';
     include_once 'functions/views/get-data.php';
 
-   foreach  (get_transaction($_SESSION['id']) as $row) {
+
+   foreach (get_transaction($_SESSION['id']) as $row) {
         $id = $row['id'];
         $fullname = $row['fullname'];
         $name = explode(' ', $fullname);
@@ -11,6 +12,15 @@
 
         $address = $row['address'];
         $contact = $row['contact'];
+    }
+
+    if(get_transaction($_SESSION['id']) == null){
+        $id = '';
+        $fullname = '';
+        $firstname = '';
+        $lastname = '';
+        $address = '';
+        $contact = '';
     }
 ?>
 
@@ -158,7 +168,7 @@
                                     <?php items_list() ?>
                                 </optgroup>
                             </select></div>
-                        <div class="mb-3"><label class="form-label"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Qty"></div>
+                        <div class="mb-3"><label class="form-label"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Qty" value="1"></div>
                    
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Add</button></div>
@@ -191,7 +201,10 @@
                 <div class="modal-body">
                     <p>Are you sure you want to cancel this transaction?</p>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="button">Cancel</button></div>
+                <form action="functions/cancel-transaction.php" method="post">
+                    <input type="hidden" name="data_id" value="<?php echo $id; ?>">
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Cancel</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -242,6 +255,11 @@
                 console.log(id); 
                 $('input[name="data_id"]').val(id);
             });
+        $('a[data-bs-target="#confirm"]').on('click', function() {
+            var id = $(this).data('id');
+            console.log(id); 
+            $('input[name="data_id"]').val(id);
+        });
     </script>
 </body>
 
