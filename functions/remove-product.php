@@ -34,6 +34,6 @@ try {
     generate_logs('Removing Expenditures', $id.'| Item was removed');
     header('Location: ../transaction.php?type=success&message=Item removed successfully!');
 } catch (\Throwable $th) {
-    generate_logs($th, 'Removing Expenditures');
+    generate_logs('Removing Expenditures', $th);
     header('Location: ../transaction.php?type=error&message=Something went wrong!');
 }

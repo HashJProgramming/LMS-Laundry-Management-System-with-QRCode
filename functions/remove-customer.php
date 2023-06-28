@@ -11,6 +11,6 @@ try {
     generate_logs('Removing Customer', $id.'| Customer was removed');
     header('Location: ../customer.php?type=success&message=Customer removed successfully!');
 } catch (\Throwable $th) {
-    generate_logs($th, 'Removing Customer');
+    generate_logs('Removing Customer', $th);
     header('Location: ../customer.php?type=error&message=Something went wrong!');
 }

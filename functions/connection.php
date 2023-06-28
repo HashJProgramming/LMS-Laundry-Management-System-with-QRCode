@@ -7,7 +7,7 @@ if (!$db) {
     die("Connection failed: " . $db->connect_error);
 }
 
-function generate_logs($logs, $type)
+function generate_logs($type, $logs)
 {
     session_start();
     global $db;

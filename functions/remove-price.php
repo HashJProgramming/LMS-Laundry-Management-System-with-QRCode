@@ -11,6 +11,6 @@ try {
     generate_logs('Removing Price', $id.'| Price was removed');
     header('Location: ../price.php?type=success&message=Price removed successfully!');
 } catch (\Throwable $th) {
-    generate_logs($th, 'Removing Price');
+    generate_logs('Removing Price', $th);
     header('Location: ../price.php?type=error&message=Something went wrong!');
 }
