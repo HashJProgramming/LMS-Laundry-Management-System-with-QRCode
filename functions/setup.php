@@ -37,6 +37,7 @@
               type VARCHAR(255),
               status VARCHAR(255),
               total DOUBLE,
+              created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
               FOREIGN KEY (user_id) REFERENCES users(id),
               FOREIGN KEY (customer_id) REFERENCES customers(id)
             )

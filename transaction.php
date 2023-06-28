@@ -1,5 +1,6 @@
 <?php
     include_once 'functions/authentication.php';
+    include_once 'functions/views/get-data.php';
 ?>
 
 <!DOCTYPE html>
@@ -89,10 +90,7 @@
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label" for="last_name"><strong>Type</strong></label><select class="form-select" name="type">
                                                 <optgroup label="Select Type">
-                                                    <option value="Whites" selected="">Whites</option>
-                                                    <option value="Colored">Colored</option>
-                                                    <option value="Blankets/Towels">Blankets/Towels</option>
-                                                    <option value="Bedsheets">Bedsheets</option>
+                                                   <?php price_list() ?>
                                                 </optgroup>
                                             </select></div>
                                     </div>
