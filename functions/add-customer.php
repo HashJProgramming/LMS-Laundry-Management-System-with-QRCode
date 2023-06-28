@@ -1,5 +1,5 @@
 <?php
-include_once 'functions/connection.php';
+include_once 'connection.php';
 
 $fullname = $_POST['firstname'] . ' ' . $_POST['lastname'];
 $fullname = strtoupper($fullname);
@@ -13,7 +13,7 @@ $stmt->bindParam(':fullname', $fullname);
 $stmt->execute();
 
 if ($stmt->rowCount() > 0) {
-    header('Location: ../customer.php?type=error&message='.$type.' is already exist');
+    header('Location: ../customer.php?type=error&message='.$fullname.' is already exist');
     exit;
 }
 

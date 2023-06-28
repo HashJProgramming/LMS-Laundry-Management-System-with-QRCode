@@ -71,7 +71,6 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Customer</th>
                                             <th>Fullname</th>
                                             <th>Address</th>
                                             <th>Contact No.</th>
@@ -80,33 +79,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>#1</td>
-                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">Airi Satou</td>
-                                            <td>1</td>
-                                            <td>150</td>
-                                            <td>Process</td>
-                                            <td>2008/11/29</td>
-                                            <td class="text-center"><a class="mx-1" href="profile-customer.php"><i class="far fa-eye" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>#2</td>
-                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">Airi Satou</td>
-                                            <td>1.5</td>
-                                            <td>225</td>
-                                            <td>Pending</td>
-                                            <td>2008/11/28</td>
-                                            <td class="text-center"><a class="mx-1" href="profile-customer.php"><i class="far fa-eye" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>#3</td>
-                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">Airi Satou</td>
-                                            <td>2</td>
-                                            <td>300</td>
-                                            <td>Pending</td>
-                                            <td>2008/11/29</td>
-                                            <td class="text-center"><a class="mx-1" href="profile-customer.php"><i class="far fa-eye" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                        </tr>
+                                        <?php
+                                            include_once 'functions/views/customers.php';
+                                        ?>
                                     </tbody>
                                     <tfoot>
                                         <tr></tr>
@@ -131,7 +106,7 @@
                     <h4 class="modal-title">Create Customer</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="functions/add-customer.php" method="post">
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" placeholder="John" name="firstname" required=""></div>
@@ -142,9 +117,10 @@
                         </div>
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Address</strong></label><input class="form-control" type="text" placeholder="Address" name="address" required=""></div>
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Contact</strong>&nbsp;No.</label><input class="form-control" type="text" placeholder="Contact No." name="contact" required="" minlength="11" maxlength="11"></div>
-                    </form>
+                    
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>
