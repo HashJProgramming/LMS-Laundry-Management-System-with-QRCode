@@ -131,7 +131,8 @@
                     <h4 class="modal-title">Update Customer</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="functions/update-customer.php" method="post">
+                        <input type="hidden" name="data_id">
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" placeholder="John" name="firstname" required=""></div>
@@ -142,9 +143,10 @@
                         </div>
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Address</strong></label><input class="form-control" type="text" placeholder="Address" name="address" required=""></div>
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Contact</strong>&nbsp;No.</label><input class="form-control" type="text" placeholder="Contact No." name="contact" minlength="11" maxlength="11"></div>
-                    </form>
+                    
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -157,7 +159,10 @@
                 <div class="modal-body">
                     <p>Are you sure you want to remove this customer?</p>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="button">Remove</button></div>
+                <form action="functions/remove-customer.php" method="post">
+                    <input type="hidden" name="data_id">
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Remove</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -231,6 +236,25 @@
             swal("Error!", message, "error");
         }
         
+        $('a[data-bs-target="#update"]').on('click', function() {
+                var id = $(this).data('id');
+                var firstname = $(this).data('firstname');
+                var lastname = $(this).data('lastname');
+                var address = $(this).data('address');
+                var contact = $(this).data('contact');
+                console.log(id, firstname, lastname, address, contact);
+                $('input[name="data_id"]').val(id);
+                $('input[name="firstname"]').val(firstname);
+                $('input[name="lastname"]').val(lastname);
+                $('input[name="address"]').val(address);
+                $('input[name="contact"]').val(contact);
+            });
+        $('a[data-bs-target="#remove"]').on('click', function() {
+            var id = $(this).data('id');
+            console.log(id); 
+            $('input[name="data_id"]').val(id);
+        });
+
     </script>
 </body>
 

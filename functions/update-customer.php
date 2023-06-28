@@ -2,7 +2,7 @@
 include_once 'connection.php';
 
 $id = $_POST['data_id'];
-$fullname = $_POST['fistname'] . ' ' . $_POST['lastname'];
+$fullname = $_POST['firstname'] . ' ' . $_POST['lastname'];
 $fullname = strtoupper($fullname);
 $address = $_POST['address'];
 $contact = $_POST['contact'];

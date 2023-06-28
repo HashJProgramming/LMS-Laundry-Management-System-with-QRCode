@@ -7,13 +7,14 @@ $fullname = strtoupper($fullname);
 $address = $_POST['address'];
 $contact = $_POST['contact'];
 
-$sql = "SELECT * FROM customers WHERE fullname = :fullname";
+$sql = "SELECT * FROM customers WHERE fullname = :fullname OR contact = :contact";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':fullname', $fullname);
+$stmt->bindParam(':contact', $contact);
 $stmt->execute();
 
 if ($stmt->rowCount() > 0) {
-    header('Location: ../customer.php?type=error&message='.$fullname.' is already exist');
+    header('Location: ../customer.php?type=error&message='.$fullname.' is already exist or contact number is already exist');
     exit;
 }
 
