@@ -13,7 +13,7 @@ $stmt->bindParam(':id', $id);
 $stmt->execute();
 
 if ($stmt->rowCount() > 0) {
-    header('Location: ../profile.php?type=error&message=The '.$type.' is already exist');
+    header('Location: ../profile.php?type=error&message='.$name.' is already exist');
     exit;
 }
 
