@@ -1,6 +1,4 @@
 <?php
-if (isset($_SESSION['level'])) {
-
     $currentPage = basename($_SERVER['PHP_SELF']);
     if ($_SESSION['level'] == '0') {
         ?>
@@ -20,5 +18,4 @@ if (isset($_SESSION['level'])) {
         <li class="nav-item"><a class="nav-link <?= ($currentPage == 'queue.php') ? 'active' : ''; ?>" href="queue.php"><i class="fas fa-table"></i><span>Queuing</span></a></li>
         <?php
     }
-}
 ?>

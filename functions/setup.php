@@ -52,6 +52,15 @@
         ");
 
         $db->exec("
+            CREATE TABLE IF NOT EXISTS prices (
+              id INT PRIMARY KEY AUTO_INCREMENT,
+              name VARCHAR(255),
+              price DOUBLE,
+              created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            )
+        ");
+
+        $db->exec("
             CREATE TABLE IF NOT EXISTS expenditures (
               id INT PRIMARY KEY AUTO_INCREMENT,
               user_id INT,
