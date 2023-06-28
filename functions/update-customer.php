@@ -31,6 +31,7 @@ $statement->bindParam(':contact', $contact);
 $statement->bindParam(':id', $id);
 $statement->execute();
 
+generate_logs('Updating Customer', $fullname.'| Customer was updated');
 header('Location: ../customer.php?type=success&message=The price was updated successfully!');
 exit();
 

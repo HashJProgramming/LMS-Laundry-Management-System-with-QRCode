@@ -30,8 +30,9 @@ try {
     $statement = $db->prepare($sql);
     $statement->bindParam(':id', $id);
     $statement->execute();
-    header('Location: ../transaction.php?type=success&message=Item removed successfully!');
 
+    generate_logs('Removing Expenditures', $id.'| Item was removed');
+    header('Location: ../transaction.php?type=success&message=Item removed successfully!');
 } catch (\Throwable $th) {
     generate_logs($th, 'Removing Expenditures');
     header('Location: ../transaction.php?type=error&message=Something went wrong!');

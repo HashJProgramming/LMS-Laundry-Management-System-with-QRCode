@@ -7,7 +7,7 @@ try {
     $statement = $db->prepare($sql);
     $statement->bindParam(':id', $id);
     $statement->execute();
-
+    generate_logs('Removing Supply', $id.'| Item was removed');
     header('Location: ../supply.php?type=success&message=Item removed successfully!');
 } catch (\Throwable $th) {
     generate_logs($th, 'Removing Supply');

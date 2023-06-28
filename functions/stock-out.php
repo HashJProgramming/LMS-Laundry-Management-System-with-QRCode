@@ -28,6 +28,7 @@ $statement->bindParam(':stock', $stock);
 $statement->bindParam(':id', $id);
 $statement->execute();
 
+generate_logs('Stock Out', $qty.' Stock was deducted');
 header('Location: ../supply.php?type=success&message=Item Stock was updated successfully!');
 exit();
 

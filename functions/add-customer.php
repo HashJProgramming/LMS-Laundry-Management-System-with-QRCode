@@ -25,6 +25,6 @@ $stmt->bindParam(':address', $address);
 $stmt->bindParam(':contact', $contact);
 $stmt->execute();
 
-
+generate_logs('Adding Customer', $fullname.'| New Customer was added');
 header('Location: ../customer.php?type=success&message=New customer was added successfully');
 ?>

@@ -8,6 +8,7 @@ try {
     $statement->bindParam(':id', $id);
     $statement->execute();
 
+    generate_logs('Removing Price', $id.'| Price was removed');
     header('Location: ../price.php?type=success&message=Price removed successfully!');
 } catch (\Throwable $th) {
     generate_logs($th, 'Removing Price');

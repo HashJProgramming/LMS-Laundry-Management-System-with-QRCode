@@ -56,7 +56,7 @@ if (count($results) > 0) {
         $stmt->bindParam(':new_stock', $newStock);
         $stmt->bindParam(':item_id', $item_id);
         $stmt->execute();
-        
+        generate_logs('Added item to transaction', 'Adding Expenditures');
         header('Location: ../transaction.php?type=success&message=Item added successfully!');
         exit();
     }
@@ -88,7 +88,7 @@ if (count($results) > 0) {
     $stmt->bindParam(':item_id', $item_id);
     $stmt->bindParam(':qty', $qty);
     $stmt->execute();
-
+    generate_logs('Added item to transaction', 'Adding Expenditures');
     header('Location: ../transaction.php?type=success&message=Item added successfully!');
     exit();
 }

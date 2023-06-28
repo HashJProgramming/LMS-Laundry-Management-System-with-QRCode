@@ -23,14 +23,13 @@ if ($stmt->rowCount() > 0) {
 
 $password = password_hash($password, PASSWORD_DEFAULT);
 
-// Insert the new user into the database
 $sql = "INSERT INTO users (username, password, level) VALUES (:username, :password, 1)";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':username', $username);
 $stmt->bindParam(':password', $password);
 $stmt->execute();
 
-// Redirect the user to the login page
+generate_logs('Adding Staff', $username.'| New Staff was added');
 header('Location: ../staff.php?type=success&message=The user was added successfully');
 
 ?>

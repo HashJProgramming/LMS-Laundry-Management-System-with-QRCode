@@ -22,6 +22,7 @@ $statement = $db->prepare($sql);
 $statement->bindParam(':stock', $stock);
 $statement->bindParam(':id', $id);
 $statement->execute();
+generate_logs('Stock In', $qty.' Stock was added');
 
 header('Location: ../supply.php?type=success&message=Item Stock was updated successfully!');
 exit();

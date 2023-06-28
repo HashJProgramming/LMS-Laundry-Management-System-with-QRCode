@@ -20,7 +20,7 @@ $stmt->bindParam(':name', $name);
 $stmt->bindParam(':price', $price);
 $stmt->execute();
 
-
+generate_logs('Adding Price', $name.'| New Price was added');
 header('Location: ../profile.php?type=success&message=The price was added successfully');
 
 ?>

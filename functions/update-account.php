@@ -22,6 +22,7 @@ if ($user && password_verify($password, $user['password'])) {
     $statement->bindParam(':password', password_hash($newpassword, PASSWORD_DEFAULT));
     $statement->execute();
 
+    generate_logs('Update Account', $username.'| Account was updated');
     header('Location: ../profile.php?type=success&message=Account updated successfully!');
     exit();
 

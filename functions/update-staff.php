@@ -23,6 +23,7 @@ $statement->bindParam(':password', password_hash($password, PASSWORD_DEFAULT));
 $statement->bindParam(':id', $id);
 $statement->execute();
 
+generate_logs('Update Staff', $username.'| Staff was updated');
 header('Location: ../staff.php?type=success&message=Staff updated successfully!');
 exit();
 

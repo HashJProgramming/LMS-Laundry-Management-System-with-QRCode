@@ -21,4 +21,6 @@ $stmt = $db->prepare($sql);
 $stmt->bindParam(':user_id', $_SESSION['id']);
 $stmt->bindParam(':customer_id', $id);
 $stmt->execute();
+
+generate_logs('Adding Transaction', 'New Transaction was added');
 header('location: ../transaction.php?type=success&message=Transaction added successfully!');

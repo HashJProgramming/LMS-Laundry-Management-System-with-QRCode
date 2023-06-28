@@ -17,7 +17,8 @@ if ($user && password_verify($password, $user['password'])) {
     $_SESSION['username'] = $username;
     $_SESSION['level'] = $user['level'];
     $_SESSION['id'] = $user['id'];
-
+    
+    generate_logs('Login', $username.'| Logged in');
     header('location: ../index.php');
 } else {
     // Show an error message

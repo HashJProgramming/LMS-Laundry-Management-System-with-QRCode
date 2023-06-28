@@ -27,6 +27,7 @@ $statement->bindParam(':price', $price);
 $statement->bindParam(':id', $id);
 $statement->execute();
 
+generate_logs('Updating Item', $name.'| Item was updated');
 header('Location: ../supply.php?type=success&message=Item was updated successfully!');
 exit();
 

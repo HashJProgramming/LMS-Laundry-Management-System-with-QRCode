@@ -27,6 +27,7 @@ $statement->bindParam(':price', $price);
 $statement->bindParam(':id', $id);
 $statement->execute();
 
+generate_logs('Updating Price', $name.'| Price was updated');
 header('Location: ../profile.php?type=success&message=The price was updated successfully!');
 exit();
 

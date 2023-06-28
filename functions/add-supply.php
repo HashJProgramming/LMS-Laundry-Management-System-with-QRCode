@@ -23,4 +23,5 @@ $stmt->bindParam(':price', $price);
 $stmt->bindParam(':qty', $qty);
 $stmt->execute();
 
+generate_logs('Adding Item', $name.'| New Item was added');
 header('Location: ../supply.php?type=success&message=Item was added successfully');
