@@ -1,5 +1,6 @@
 <?php
     include_once 'functions/authentication.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -77,16 +78,16 @@
                                             <p class="text-primary m-0 fw-bold">User Settings</p>
                                         </div>
                                         <div class="card-body">
-                                            <form>
+                                            <form action="functions/update-account.php" method="post">
                                                 <div class="row">
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="username"><strong>Username</strong></label><input class="form-control" type="text" id="username" placeholder="user.name" name="username"></div>
+                                                        <div class="mb-3"><label class="form-label" for="username"><strong>Username</strong></label><input class="form-control" type="text" id="username" placeholder="username" name="username" value="<?php echo $_SESSION['username'];?>"></div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="email"><strong>Confirm&nbsp;Password</strong></label><input class="form-control" type="email" id="email" placeholder="Password" name="email"></div>
+                                                        <div class="mb-3"><label class="form-label" for="email"><strong>Confirm&nbsp;Password</strong></label><input class="form-control" type="password" placeholder="Current Password" name="current"></div>
                                                     </div>
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="email"><strong>New Password</strong></label><input class="form-control" type="email" id="email-1" placeholder="New Password" name="email"></div>
+                                                        <div class="mb-3"><label class="form-label" for="email"><strong>New Password</strong></label><input class="form-control" type="password" placeholder="New Password" name="password"></div>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save Settings</button></div>

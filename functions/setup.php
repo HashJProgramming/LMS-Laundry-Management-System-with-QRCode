@@ -36,6 +36,7 @@
               kilo DOUBLE,
               type VARCHAR(255),
               status VARCHAR(255),
+              total DOUBLE,
               FOREIGN KEY (user_id) REFERENCES users(id),
               FOREIGN KEY (customer_id) REFERENCES customers(id)
             )
@@ -61,6 +62,16 @@
         ");
 
         $db->exec("
+          CREATE TABLE IF NOT EXISTS logs (
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            user_id int,
+            details TEXT,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id)
+        )
+        ");
+
+        $db->exec("
             CREATE TABLE IF NOT EXISTS expenditures (
               id INT PRIMARY KEY AUTO_INCREMENT,
               user_id INT,
@@ -77,7 +88,6 @@
 
         $db->beginTransaction();
 
-        // Check if admin user already exists
         $stmt = $db->prepare("SELECT COUNT(*) FROM `users` WHERE `username` = 'admin'");
         $stmt->execute();
         $userExists = $stmt->fetchColumn();
