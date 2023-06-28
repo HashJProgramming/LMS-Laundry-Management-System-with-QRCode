@@ -7,7 +7,6 @@ $fullname = strtoupper($fullname);
 $address = $_POST['address'];
 $contact = $_POST['contact'];
 
-
 $sql = "SELECT * FROM customers WHERE fullname = :fullname AND id != :id";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':fullname', $fullname);

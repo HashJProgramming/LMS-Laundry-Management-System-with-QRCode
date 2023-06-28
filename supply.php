@@ -79,38 +79,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>#1</td>
-                                            <td>Downy</td>
-                                            <td>150</td>
-                                            <td>10</td>
-                                            <td>2008/11/29</td>
-                                            <td class="text-center"><a class="mx-1" href="#" data-bs-target="#stock-in" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#stock-out" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>#1</td>
-                                            <td>Downy</td>
-                                            <td>150</td>
-                                            <td>10</td>
-                                            <td>2008/11/29</td>
-                                            <td class="text-center"><a class="mx-1" href="#" data-bs-target="#stock-in" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#stock-out" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>#1</td>
-                                            <td>Downy</td>
-                                            <td>150</td>
-                                            <td>10</td>
-                                            <td>2008/11/29</td>
-                                            <td class="text-center"><a class="mx-1" href="#" data-bs-target="#stock-in" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#stock-out" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>#1</td>
-                                            <td>Downy</td>
-                                            <td>150</td>
-                                            <td>10</td>
-                                            <td>2008/11/29</td>
-                                            <td class="text-center"><a class="mx-1" href="#" data-bs-target="#stock-in" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#stock-out" data-bs-toggle="modal"><i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                        </tr>
+                                        <?php
+                                            include_once 'functions/views/supply.php';
+                                        ?>
                                     </tbody>
                                     <tfoot>
                                         <tr></tr>
@@ -135,13 +106,14 @@
                     <h4 class="modal-title">Add Item</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="functions/add-supply.php" method="post">
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" required=""></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Price</strong></label><input class="form-control" type="text" name="price" placeholder="Price" required=""></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Qty</strong></label><input class="form-control" type="text" name="qty" placeholder="Quantity" required=""></div>
-                    </form>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Price</strong></label><input class="form-control" type="number" name="price" placeholder="Price" required=""></div>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Qty</strong></label><input class="form-control" type="number" name="qty" placeholder="Quantity" required=""></div>
+                  
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -152,12 +124,13 @@
                     <h4 class="modal-title">Update Item</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="functions/update-supply.php" method="post">
+                        <input type="hidden" name="data_id">
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" required=""></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Price</strong></label><input class="form-control" type="text" name="price" placeholder="Price" required=""></div>
-                    </form>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Price</strong></label><input class="form-control" type="number" name="price" placeholder="Price" required=""></div>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -168,11 +141,13 @@
                     <h4 class="modal-title">Item Stock In</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="functions/stock-in.php" method="post">
+                        <input type="hidden" name="data_id">
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Stock In" required=""></div>
-                    </form>
+                    
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -183,11 +158,13 @@
                     <h4 class="modal-title">Item Stock Out</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="functions/stock-out.php" method="post">
+                        <input type="hidden" name="data_id">
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Stock Out" required=""></div>
-                    </form>
+                   
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -200,11 +177,13 @@
                 <div class="modal-body">
                     <p>Are you sure you want to remove this item?</p>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="button">Remove</button></div>
+                <form action="functions/remove-supply.php" method="post">
+                    <input type="hidden" name="data_id">
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Remove</button></div>
+                </form>
             </div>
         </div>
     </div>
-
     <div class="modal fade" role="dialog" tabindex="-1" id="transaction">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -213,7 +192,7 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Select Customer</strong></label><select class="form-select" name="id">
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Select Customer</strong></label><select class="form-select">
                                 <optgroup label="Select Customer">
                                     <option value="12" selected="">Juanito</option>
                                 </optgroup>
@@ -224,31 +203,30 @@
             </div>
         </div>
     </div>
-    
-<div class="modal fade" role="dialog" tabindex="-1" id="transaction-1">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">New Transaction</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="row">
-                        <div class="col">
-                            <div class="mb-3"><label class="form-label" for="first_name"><strong>Firstname</strong></label><input class="form-control" type="text" name="firstname" placeholder="Fristname" required=""></div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="transaction-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">New Transaction</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" for="first_name"><strong>Firstname</strong></label><input class="form-control" type="text" name="firstname" placeholder="Fristname" required=""></div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Type</strong></label><input class="form-control" type="text" name="lastname" placeholder="Lastname" required=""></div>
+                            </div>
                         </div>
-                        <div class="col">
-                            <div class="mb-3"><label class="form-label" for="last_name"><strong>Type</strong></label><input class="form-control" type="text" name="lastname" placeholder="Lastname" required=""></div>
-                        </div>
-                    </div>
-                    <div class="mb-3"><label class="form-label" for="first_name"><strong>Address</strong></label><input class="form-control" type="text" name="address" placeholder="Address" required=""></div>
-                    <div class="mb-3"><label class="form-label" for="first_name"><strong>Contact No.</strong></label><input class="form-control" type="text" name="contact" placeholder="Contact" required="" minlength="11" maxlength="11"></div>
-                </form>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Address</strong></label><input class="form-control" type="text" name="address" placeholder="Address" required=""></div>
+                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Contact No.</strong></label><input class="form-control" type="text" name="contact" placeholder="Contact" required="" minlength="11" maxlength="11"></div>
+                    </form>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-target="#transaction" data-bs-toggle="modal">Already Registered?</button><button class="btn btn-primary" type="button">Save</button></div>
             </div>
-            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-target="#transaction" data-bs-toggle="modal">Already Registered?</button><button class="btn btn-primary" type="button">Save</button></div>
         </div>
     </div>
-</div>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
@@ -273,7 +251,33 @@
         } else if (type == 'error') {
             swal("Error!", message, "error");
         }
+        $('a[data-bs-target="#update"]').on('click', function() {
+                var id = $(this).data('id');
+                var name = $(this).data('name');
+                var price = $(this).data('price');
+                console.log(id, name, price);
+                $('input[name="data_id"]').val(id);
+                $('input[name="name"]').val(name);
+                $('input[name="price"]').val(price);
+
+            });
+        $('a[data-bs-target="#remove"]').on('click', function() {
+            var id = $(this).data('id');
+            console.log(id); 
+            $('input[name="data_id"]').val(id);
+        });
         
+        $('a[data-bs-target="#stock-in"]').on('click', function() {
+            var id = $(this).data('id');
+            console.log(id); 
+            $('input[name="data_id"]').val(id);
+        });
+
+        $('a[data-bs-target="#stock-out"]').on('click', function() {
+            var id = $(this).data('id');
+            console.log(id); 
+            $('input[name="data_id"]').val(id);
+        });
     </script>
 </body>
 
