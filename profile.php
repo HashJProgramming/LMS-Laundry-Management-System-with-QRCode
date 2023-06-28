@@ -164,6 +164,7 @@
                 </div>
                 <div class="modal-body">
                     <form action="functions/update-price.php" method="post">
+                        <input type="hidden" name="data_id">
                         <input class="form-control" type="text" name="type" placeholder="Name" style="margin-bottom: 15px;" required="">
                         <input class="form-control" type="number" name="price" placeholder="Price" required="">
                     
