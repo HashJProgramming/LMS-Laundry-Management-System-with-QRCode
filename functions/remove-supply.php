@@ -10,6 +10,6 @@ try {
 
     header('Location: ../supply.php?type=success&message=Item removed successfully!');
 } catch (\Throwable $th) {
-    generate_logs($th, 'Removing supply');
+    generate_logs($th, 'Removing Supply');
     header('Location: ../supply.php?type=error&message=Something went wrong!');
 }

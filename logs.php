@@ -76,13 +76,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">Airi Satou</td>
-                                            <td>Administrator</td>
-                                            <td>Proceed</td>
-                                            <td>2008/11/28</td>
-                                        </tr>
+                                        <?php include_once 'functions/views/activity.php' ?>
                                     </tbody>
                                     <tfoot>
                                         <tr></tr>

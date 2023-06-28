@@ -33,6 +33,6 @@ try {
     header('Location: ../transaction.php?type=success&message=Item removed successfully!');
 
 } catch (\Throwable $th) {
-
+    generate_logs($th, 'Removing Expenditures');
     header('Location: ../transaction.php?type=error&message=Something went wrong!');
 }

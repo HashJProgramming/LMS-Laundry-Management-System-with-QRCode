@@ -10,6 +10,6 @@ try {
 
     header('Location: ../customer.php?type=success&message=Customer removed successfully!');
 } catch (\Throwable $th) {
-    generate_logs($th, 'Removing customer');
+    generate_logs($th, 'Removing Customer');
     header('Location: ../customer.php?type=error&message=Something went wrong!');
 }

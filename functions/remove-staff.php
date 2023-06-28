@@ -9,6 +9,6 @@ try {
     $statement->execute();
     header('Location: ../staff.php?type=success&message=Staff removed successfully!');
 } catch (\Throwable $th) {
-    generate_logs($th, 'Removing staff');
+    generate_logs($th, 'Removing Staff');
     header('Location: ../staff.php?type=error&message=Something went wrong!');
 }

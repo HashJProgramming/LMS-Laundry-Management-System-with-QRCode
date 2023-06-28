@@ -10,6 +10,6 @@ try {
 
     header('Location: ../price.php?type=success&message=Price removed successfully!');
 } catch (\Throwable $th) {
-    generate_logs($th, 'Removing price');
+    generate_logs($th, 'Removing Price');
     header('Location: ../price.php?type=error&message=Something went wrong!');
 }
