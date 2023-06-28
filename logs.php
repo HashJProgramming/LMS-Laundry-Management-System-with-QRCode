@@ -26,13 +26,9 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link" data-bs-target="#transaction" data-bs-toggle="modal" href="#"><i class="far fa-credit-card"></i><span>New Transaction</span></a><a class="nav-link" href="transaction.php"><i class="far fa-credit-card"></i><span>Transaction</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="customer.php"><i class="fas fa-user"></i><span>Customers</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="staff.php"><i class="fas fa-user"></i><span>Staff</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="expedinture.php"><i class="far fa-share-square" style="font-size: 14px;"></i><span>Expenditure</span></a><a class="nav-link" href="supply.php"><i class="fas fa-shopping-cart" style="font-size: 14px;"></i><span>Supply</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="queue.php"><i class="fas fa-table"></i><span>Queuing</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="sales.php"><i class="fas fa-table"></i><span>Sales</span></a></li>
+                    <?php
+                        include_once 'functions/views/navbar.php';
+                    ?>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -104,6 +100,11 @@
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
+
+    <?php
+    include_once 'functions/modals/transact.php'
+    ?>
+    
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>

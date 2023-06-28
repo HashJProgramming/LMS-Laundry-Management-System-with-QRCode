@@ -18,8 +18,8 @@ if ($user && password_verify($password, $user['password'])) {
     $_SESSION['level'] = $user['level'];
     $_SESSION['id'] = $user['id'];
 
-    header('location: ../index.php?message=success');
+    header('location: ../index.php');
 } else {
     // Show an error message
-    header('location: ../login.php?message=error');
+    header('location: ../login.php?type=error&message=Wrong username or password');
 }

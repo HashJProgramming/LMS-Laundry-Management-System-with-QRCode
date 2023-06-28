@@ -26,13 +26,9 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link active" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                    <li class="nav-item"><a class="nav-link active" data-bs-target="#transaction" data-bs-toggle="modal" href="#"><i class="far fa-credit-card"></i><span>New Transaction</span></a><a class="nav-link" href="transaction.php"><i class="far fa-credit-card"></i><span>Transaction</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="customer.php"><i class="fas fa-user"></i><span>Customers</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="staff.php"><i class="fas fa-user"></i><span>Staff</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="expedinture.php"><i class="far fa-share-square" style="font-size: 14px;"></i><span>Expenditure</span></a><a class="nav-link" href="supply.php"><i class="fas fa-shopping-cart" style="font-size: 14px;"></i><span>Supply</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="queue.php"><i class="fas fa-table"></i><span>Queuing</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="sales.php"><i class="fas fa-table"></i><span>Sales</span></a></li>
+                    <?php
+                        include_once 'functions/views/navbar.php';
+                    ?>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -295,49 +291,10 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="transaction">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">New Transaction</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Select Customer</strong></label><select class="form-select" name="id">
-                                <optgroup label="Select Customer">
-                                    <option value="12" selected="">Juanito</option>
-                                </optgroup>
-                            </select></div>                     
-                    </form>
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-target="#transaction-1" data-bs-toggle="modal">New Customer</button><button class="btn btn-primary" type="button">Save</button></div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="transaction-1">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">New Transaction</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label" for="first_name"><strong>Firstname</strong></label><input class="form-control" type="text" name="firstname" placeholder="Fristname" required=""></div>
-                            </div>
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Type</strong></label><input class="form-control" type="text" name="lastname" placeholder="Lastname" required=""></div>
-                            </div>
-                        </div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Address</strong></label><input class="form-control" type="text" name="address" placeholder="Address" required=""></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Contact No.</strong></label><input class="form-control" type="text" name="contact" placeholder="Contact" required="" minlength="11" maxlength="11"></div>
-                    </form>
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-target="#transaction" data-bs-toggle="modal">Already Registered?</button><button class="btn btn-primary" type="button">Save</button></div>
-            </div>
-        </div>
-    </div>
+    
+    <?php
+    include_once 'functions/modals/transact.php'
+    ?>
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
