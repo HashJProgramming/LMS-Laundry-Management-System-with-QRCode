@@ -70,21 +70,17 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Customer</th>
+                                            <th>User</th>
                                             <th>KG/Kilo</th>
-                                            <th>Price</th>
+                                            <th>Total</th>
                                             <th>Status</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>33</td>
-                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">Airi Satou</td>
-                                            <td>1</td>
-                                            <td>₱250</td>
-                                            <td>Proceed</td>
-                                            <td>2008/11/28</td>
-                                        </tr>
+                                        <?php
+                                            include_once 'functions/views/sales.php'
+                                        ?>
                                     </tbody>
                                     <tfoot>
                                         <tr></tr>
