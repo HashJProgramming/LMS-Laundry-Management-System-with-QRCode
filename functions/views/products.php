@@ -5,7 +5,7 @@ if (!$_SESSION['id']){
 }
 $user_id = $_SESSION['id'];
 
-$sql = 'SELECT ex.id, ex.qty, ex.created_at, i.name
+$sql = 'SELECT ex.id, ex.qty, ex.created_at, i.name, i.price
         FROM expenditures AS ex
         JOIN items AS i ON ex.item_id = i.id
         JOIN transactions AS t ON ex.transaction_id = t.id
@@ -22,6 +22,7 @@ foreach ($results as $row) {
     <tr>
         <td>#<?php echo $row['id']; ?></td>
         <td><?php echo $row['name']; ?></td>
+        <td>₱<?php echo $row['price']; ?></td>
         <td><?php echo $row['qty']; ?></td>
         <td><?php echo $row['created_at']; ?></td>
         

@@ -106,7 +106,7 @@
                                 <div class="mb-3"><label class="form-label" for="last_name"><strong>Contact</strong></label><input class="form-control" type="text" placeholder="Contact" name="address" readonly="" value="<?php echo $contact ?>"></div>
                                 <div class="row">
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Kg/Kilo</strong></label><input class="form-control" type="number" id="first_name-1" placeholder="Kg/Kilogram" name="kilo"></div>
+                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Kg/Kilo</strong></label><input class="form-control" type="number" value="1" id="first_name-1" placeholder="Kg/Kilogram" name="kilo"></div>
                                     </div>
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label" for="last_name"><strong>Type</strong></label><select class="form-select" name="type">
@@ -130,6 +130,7 @@
                                         <tr>
                                             <th>ID #</th>
                                             <th>Item</th>
+                                            <th>Price</th>
                                             <th>Qty</th>
                                             <th>Date</th>
                                             <th class="text-center">Option</th>
@@ -217,7 +218,12 @@
                 <div class="modal-body">
                     <p>Are you sure you want to proceed this transaction?</p>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="button">Proceed</button></div>
+                <form action="functions/proceed-transaction.php" method="post">
+                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                    <input type="hidden" name="kilo">
+                    <input type="hidden" name="type">
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Proceed</button></div>
+                </form>
             </div>
         </div>
     </div>
@@ -259,6 +265,15 @@
             var id = $(this).data('id');
             console.log(id); 
             $('input[name="data_id"]').val(id);
+        });
+        $('button[data-bs-target="#proceed"]').on('click', function() {
+            var id = $(this).data('id');
+            var kilo = $('input[name="kilo"]').val();
+            var type = $('select[name="type"]').val();
+            console.log(kilo, type);
+            $('input[name="id"]').val(id);
+            $('input[name="kilo"]').val(kilo);
+            $('input[name="type"]').val(type);
         });
     </script>
 </body>
