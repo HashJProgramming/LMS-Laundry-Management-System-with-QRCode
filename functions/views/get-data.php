@@ -52,7 +52,7 @@ function get_transaction ($id){
     $sql = 'SELECT t.id, c.fullname, c.address, c.contact
             FROM transactions AS t
             JOIN customers AS c ON t.customer_id = c.id
-            WHERE t.status = 0;
+            WHERE t.status = 0 AND t.user_id = '.$id.';
             ';
     $stmt = $db->prepare($sql);
     $stmt->execute();

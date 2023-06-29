@@ -1,5 +1,6 @@
 <?php
     include_once 'functions/authentication.php';
+    include_once 'functions/views/dashboard-count.php';
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +69,7 @@
                                     <div class="row align-items-center no-gutters">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Earnings (monthly)</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>₱40,000</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span>₱<?php get_monthly()?></span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                                     </div>
@@ -81,7 +82,7 @@
                                     <div class="row align-items-center no-gutters">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Earnings (annual)</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>₱215,000</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span>₱<?php get_yearly()?></span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
                                     </div>
@@ -94,7 +95,7 @@
                                     <div class="row align-items-center no-gutters">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>Total customer</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>3</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span><?php get_customers()?></span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
                                     </div>
@@ -107,7 +108,7 @@
                                     <div class="row align-items-center no-gutters">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Pending&nbsp; Laundry</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span><?php get_pending()?></span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-bell fa-2x text-gray-300"></i></div>
                                     </div>
@@ -120,20 +121,7 @@
                                     <div class="row align-items-center no-gutters">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span class="text-primary">PROCESS Laundry</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
-                                        </div>
-                                        <div class="col-auto"><i class="fas fa-bell fa-2x text-gray-300"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-xl-3 mb-4">
-                            <div class="card shadow border-start-warning py-2">
-                                <div class="card-body">
-                                    <div class="row align-items-center no-gutters">
-                                        <div class="col me-2">
-                                            <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span class="text-primary">DRYING Laundry</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span><?php get_processing()?></span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-bell fa-2x text-gray-300"></i></div>
                                     </div>
@@ -146,7 +134,7 @@
                                     <div class="row align-items-center no-gutters">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span class="text-primary">FOLDING Laundry</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span><?php get_folding()?></span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-bell fa-2x text-gray-300"></i></div>
                                     </div>
@@ -159,7 +147,20 @@
                                     <div class="row align-items-center no-gutters">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span class="text-primary">READY FOR PICKUP Laundry</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span><?php get_ready()?></span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-bell fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-warning py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span class="text-primary">Claimed Laundry</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span><?php get_claimed()?></span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-bell fa-2x text-gray-300"></i></div>
                                     </div>
@@ -180,7 +181,11 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="chart-area"><canvas data-bss-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Earnings&quot;,&quot;fill&quot;:true,&quot;data&quot;:[&quot;0&quot;,&quot;10000&quot;,&quot;5000&quot;,&quot;15000&quot;,&quot;10000&quot;,&quot;20000&quot;,&quot;15000&quot;,&quot;25000&quot;],&quot;backgroundColor&quot;:&quot;rgba(78, 115, 223, 0.05)&quot;,&quot;borderColor&quot;:&quot;rgba(78, 115, 223, 1)&quot;}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;fontStyle&quot;:&quot;normal&quot;,&quot;padding&quot;:20}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;]},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;fontStyle&quot;:&quot;normal&quot;,&quot;padding&quot;:20}}]}}}"></canvas></div>
+                                    <div class="chart-area">
+                                        <?php 
+                                            include_once 'functions/views/dashboard-chart.php'
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -195,40 +200,20 @@
                                     <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
                                         <table class="table table-striped my-0" id="dataTable">
                                             <thead>
-                                                <tr>
-                                                    <th>Queue #</th>
-                                                    <th>Customer</th>
-                                                    <th>Kg/Kilo</th>
-                                                    <th>Price</th>
-                                                    <th>Status</th>
-                                                    <th>Date</th>
-                                                </tr>
+                                            <tr>
+                                                <th>Queue </th>
+                                                <th>Customer</th>
+                                                <th>Transaction ID</th>
+                                                <th>Kg/Kilo</th>
+                                                <th>Total</th>
+                                                <th>Status</th>
+                                                <th>Date</th>
+                                            </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>#1</td>
-                                                    <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">Airi Satou</td>
-                                                    <td>1</td>
-                                                    <td>150</td>
-                                                    <td>Process</td>
-                                                    <td>2008/11/29</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#2</td>
-                                                    <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">Airi Satou</td>
-                                                    <td>1.5</td>
-                                                    <td>225</td>
-                                                    <td>Pending</td>
-                                                    <td>2008/11/28</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>#3</td>
-                                                    <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">Airi Satou</td>
-                                                    <td>2</td>
-                                                    <td>300</td>
-                                                    <td>Pending</td>
-                                                    <td>2008/11/29</td>
-                                                </tr>
+                                                <?php
+                                                    include_once 'functions/views/queue-dashboard.php'
+                                                ?>
                                             </tbody>
                                             <tfoot>
                                                 <tr></tr>
