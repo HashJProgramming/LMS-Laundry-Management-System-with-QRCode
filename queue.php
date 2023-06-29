@@ -67,43 +67,20 @@
                                 <table class="table table-striped my-0" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Queue #</th>
+                                            <th>Queue </th>
                                             <th>Customer</th>
+                                            <th>Transaction ID</th>
                                             <th>Kg/Kilo</th>
-                                            <th>Price</th>
+                                            <th>Total</th>
                                             <th>Status</th>
                                             <th>Date</th>
                                             <th class="text-center">Option</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>#1</td>
-                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">Airi Satou</td>
-                                            <td>1</td>
-                                            <td>150</td>
-                                            <td>Process</td>
-                                            <td>2008/11/29</td>
-                                            <td class="text-center"><a class="mx-1" href="#"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a><a class="mx-1" href="#"><i class="far fa-credit-card" style="font-size: 20px;"></i></a><a class="mx-1" href="#"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>#2</td>
-                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">Airi Satou</td>
-                                            <td>1.5</td>
-                                            <td>225</td>
-                                            <td>Pending</td>
-                                            <td>2008/11/28</td>
-                                            <td class="text-center"><a class="mx-1" href="#"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a><a class="mx-1" href="#"><i class="far fa-credit-card" style="font-size: 20px;"></i></a><a class="mx-1" href="#"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>#3</td>
-                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">Airi Satou</td>
-                                            <td>2</td>
-                                            <td>300</td>
-                                            <td>Pending</td>
-                                            <td>2008/11/29</td>
-                                            <td class="text-center"><a class="mx-1" href="#"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a><a class="mx-1" href="#"><i class="far fa-credit-card" style="font-size: 20px;"></i></a><a class="mx-1" href="#"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a><a class="mx-1" href="#"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a></td>
-                                        </tr>
+                                        <?php
+                                            include_once 'functions/views/queue.php'
+                                        ?>
                                     </tbody>
                                     <tfoot>
                                         <tr></tr>
@@ -122,6 +99,54 @@
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
 
+    <div class="modal fade" role="dialog" tabindex="-1" id="confirm">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Cancel Transaction</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to cancel this transaction?</p>
+                </div>
+                <form action="functions/cancel-transaction.php" method="post">
+                    <input type="hidden" name="data_id">
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Cancel</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="up">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Update Status</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to update the status?</p>
+                </div>
+                <form action="functions/up-transaction.php" method="post">
+                    <input type="hidden" name="data_id">
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="down">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Update Status</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to update the status?</p>
+                </div>
+                <form action="functions/down-transaction.php" method="post">
+                    <input type="hidden" name="data_id">
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
     <?php
         include_once 'functions/modals/transaction-modal.php';
     ?>
@@ -150,6 +175,22 @@
             swal("Error!", message, "error");
         }
         
+        $('a[data-bs-target="#confirm"]').on('click', function() {
+                var id = $(this).data('id');
+                console.log(id); 
+                $('input[name="data_id"]').val(id);
+            });
+        $('a[data-bs-target="#up"]').on('click', function() {
+            var id = $(this).data('id');
+            console.log(id); 
+            $('input[name="data_id"]').val(id);
+        });
+        $('a[data-bs-target="#down"]').on('click', function() {
+            var id = $(this).data('id');
+            console.log(id); 
+            $('input[name="data_id"]').val(id);
+        });
+            
     </script>
 </body>
 

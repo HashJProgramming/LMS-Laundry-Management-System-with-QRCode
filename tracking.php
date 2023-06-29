@@ -1,3 +1,38 @@
+<?php
+include_once 'functions/connection.php';
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+} else {
+    header('Location: 404.php');
+}
+
+
+$sql = 'SELECT id, status, queue_number 
+        FROM ( SELECT id, status, ROW_NUMBER() 
+        OVER (ORDER BY status DESC, kilo ASC) AS queue_number 
+        FROM Transactions ) AS subquery WHERE id = :id';
+
+$stmt = $db->prepare($sql);
+$stmt->execute(['id' => $id]);
+$result = $stmt->fetch();
+
+$status = $result['status'];
+$queue_number = $result['queue_number'];
+if($status == 0){
+    $status = 10;
+}else if($status == 1){
+    $status = 30;
+}else if($status == 2){
+    $status = 50;
+}else if($status == 3){
+    $status = 80;
+}else if($status == 4){
+    $status = 100;
+}else{
+    $status = 0;
+}
+
+?>
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
@@ -23,14 +58,13 @@
                                 <div class="col-xl-6">
                                     <div class="d-flex justify-content-between align-items-center mb-5">
                                         <div>
-                                            <h5 class="mb-0">Queue&nbsp;<span class="text-primary font-weight-bold">#3</span></h5>
+                                            <h2 class="mb-0">Queue&nbsp;<span class="text-primary font-weight-bold">#<?php echo $queue_number; ?></span></h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="text-end">
                                         <p class="mb-0">LMS - Laundry Management System (QRCode)</p>
-                                        <p>INVOICE&nbsp;<span>234094567242423422898</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -38,13 +72,13 @@
                                 <div class="col"><img src="assets/img/washing-clothes.gif" width="100%"></div>
                             </div>
                             <div class="progress d-flex justify-content-between d-flex justify-content-between mx-0 mt-0 mb-5">
-                                <div class="progress-bar bg-success progress-bar-animated" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%;"><span class="visually-hidden">10%</span></div>
+                                <div class="progress-bar bg-success progress-bar-animated" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $status?>%;"></div>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="d-lg-flex align-items-center"><i class="fas fa-clipboard-list fa-3x me-lg-4 mb-3 mb-lg-0"></i>
                                         <div>
-                                            <p class="fw-bold mb-0">Processed</p>
+                                            <p class="fw-bold mb-0">Pending</p>
                                         </div>
                                     </div>
                                 </div>
