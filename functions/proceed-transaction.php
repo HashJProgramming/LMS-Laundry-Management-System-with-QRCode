@@ -43,6 +43,7 @@ $stmt->bindParam(':id', $type);
 $stmt->execute();
 $results = $stmt->fetchAll();
 
+$price_name = $results[0]['name'];
 $price = ($results[0]['price'] * $kilo);
 $total = $item_total + $price;
 
@@ -66,4 +67,4 @@ echo $total;
 
 
 generate_logs('New Pending Transaction', $_SESSION['id'].' added a new pending transaction');
-header('location: ../transaction.php?type=success&message=Transaction added successfully!');
+header('location: ../reciept.php?id='.$id.'&kilo='.$kilo.'&type='.$price_name.'&type_price='.$price.'&products='.$item_total.'&total='.$total);
