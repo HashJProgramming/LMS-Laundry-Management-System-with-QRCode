@@ -36,10 +36,10 @@
               kilo DOUBLE,
               type VARCHAR(255),
               status VARCHAR(255),
-              total DOUBLE,
+              total DECIMAL(10,2),
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-              FOREIGN KEY (user_id) REFERENCES users(id),
-              FOREIGN KEY (customer_id) REFERENCES customers(id)
+              FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+              FOREIGN KEY (customer_id) REFERENCES customers(id) ON DELETE CASCADE
             )
         ");
 
@@ -47,7 +47,7 @@
             CREATE TABLE IF NOT EXISTS items (
               id INT PRIMARY KEY AUTO_INCREMENT,
               name VARCHAR(255),
-              price DOUBLE,
+              price DECIMAL(10,2),
               stock INT,
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )
@@ -57,7 +57,7 @@
             CREATE TABLE IF NOT EXISTS prices (
               id INT PRIMARY KEY AUTO_INCREMENT,
               name VARCHAR(255),
-              price DOUBLE,
+              price DECIMAL(10,2),
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )
         ");
@@ -69,7 +69,7 @@
             logs TEXT,
             type TEXT,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-            FOREIGN KEY (user_id) REFERENCES users(id)
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
         )
         ");
 
@@ -81,9 +81,9 @@
               transaction_id INT,
               qty INT,
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-              FOREIGN KEY (user_id) REFERENCES users(id),
-              FOREIGN KEY (item_id) REFERENCES items(id),
-              FOREIGN KEY (transaction_id) REFERENCES transactions(id)
+              FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+              FOREIGN KEY (item_id) REFERENCES items(id) ON DELETE CASCADE,
+              FOREIGN KEY (transaction_id) REFERENCES transactions(id) ON DELETE CASCADE
             )
         ");
 
