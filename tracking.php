@@ -2,35 +2,38 @@
 include_once 'functions/connection.php';
 if(isset($_GET['id'])){
     $id = $_GET['id'];
+    
+    $sql = 'SELECT id, status, queue_number 
+            FROM ( SELECT id, status, ROW_NUMBER() 
+            OVER (ORDER BY status DESC, kilo ASC) AS queue_number 
+            FROM Transactions ) AS subquery WHERE id = :id AND status <= 4';
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute(['id' => $id]);
+    $result = $stmt->fetch();
+
+    $status = $result['status'];
+    $queue_number = $result['queue_number'];
+    if($status == 0){
+        $status = 10;
+    }else if($status == 1){
+        $status = 30;
+    }else if($status == 2){
+        $status = 50;
+    }else if($status == 3){
+        $status = 80;
+    }else if($status == 4){
+        $status = 100;
+        $queue_number = "Done!";
+    }else{
+        $status = 0;
+    }
 } else {
-    header('Location: 404.php');
-}
-
-
-$sql = 'SELECT id, status, queue_number 
-        FROM ( SELECT id, status, ROW_NUMBER() 
-        OVER (ORDER BY status DESC, kilo ASC) AS queue_number 
-        FROM Transactions ) AS subquery WHERE id = :id AND status <= 4';
-
-$stmt = $db->prepare($sql);
-$stmt->execute(['id' => $id]);
-$result = $stmt->fetch();
-
-$status = $result['status'];
-$queue_number = $result['queue_number'];
-if($status == 0){
-    $status = 10;
-}else if($status == 1){
-    $status = 30;
-}else if($status == 2){
-    $status = 50;
-}else if($status == 3){
-    $status = 80;
-}else if($status == 4){
-    $status = 100;
-}else{
+    $queue_number = "Invalid Tracking Number!";
     $status = 0;
 }
+
+
 
 ?>
 <!DOCTYPE html>
