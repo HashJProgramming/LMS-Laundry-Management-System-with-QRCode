@@ -67,4 +67,4 @@ echo $total;
 
 
 generate_logs('New Pending Transaction', $_SESSION['id'].' added a new pending transaction');
-header('location: ../reciept.php?id='.$id.'&kilo='.$kilo.'&type='.$price_name.'&type_price='.$price.'&products='.$item_total.'&total='.$total);
+header('location: ../reciept.php?id='.$transaction_id.'&kilo='.$kilo.'&type='.$price_name.'&type_price='.$price.'&products='.$item_total.'&total='.$total);

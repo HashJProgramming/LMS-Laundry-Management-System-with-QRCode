@@ -10,7 +10,7 @@ if(isset($_GET['id'])){
 $sql = 'SELECT id, status, queue_number 
         FROM ( SELECT id, status, ROW_NUMBER() 
         OVER (ORDER BY status DESC, kilo ASC) AS queue_number 
-        FROM Transactions ) AS subquery WHERE id = :id';
+        FROM Transactions ) AS subquery WHERE id = :id AND status <= 4';
 
 $stmt = $db->prepare($sql);
 $stmt->execute(['id' => $id]);
