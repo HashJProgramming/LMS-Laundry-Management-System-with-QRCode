@@ -1,7 +1,6 @@
 <?php
     include_once 'functions/authentication.php';
-    session_start();
-    if ($_SESSION['level'] = 1){
+    if ($_SESSION['level'] == 1){
         header('Location: profile-staff.php');
     }
 ?>
