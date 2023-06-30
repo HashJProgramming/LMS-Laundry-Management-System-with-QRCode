@@ -1,7 +1,6 @@
 <?php
     include_once 'functions/authentication.php';
-    session_start();
-    if ($_SESSION['level'] = 1){
+    if ($_SESSION['level'] == 1){
         header('Location: index.php?type=error&message=You are not allowed to access this page.');
     }
 ?>

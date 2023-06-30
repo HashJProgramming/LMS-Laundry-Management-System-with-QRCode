@@ -68,7 +68,7 @@
                                 <table class="table table-striped my-0" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
+                                            <th>Transaction ID</th>
                                             <th>Customer</th>
                                             <th>User</th>
                                             <th>KG/Kilo</th>
