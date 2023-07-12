@@ -10,10 +10,14 @@ function get_monthly(){
             AND YEAR(created_at) = YEAR(CURRENT_TIMESTAMP)";
     $stmt = $db->prepare($sql);
     $stmt->execute();
-
     $results = $stmt->fetchAll();
     foreach ($results as $row) {
-        echo $row['total_earnings'];
+        if ($row['total_earnings'] == null){
+            echo "0";
+        }
+        else{
+            echo $row['total_earnings'];
+        }
     }
 }
 
@@ -27,8 +31,12 @@ function get_yearly(){
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll();
+    if ($results){
     foreach ($results as $row) {
         echo $row['total_earnings'];
+    }}
+    else{
+        echo "0";
     }
 }
 
@@ -54,8 +62,12 @@ function get_processing(){
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll();
+   if($results){
     foreach ($results as $row) {
         echo $row['total_processing'];
+    }}
+    else{
+        echo "0";
     }
 }
 
@@ -67,8 +79,12 @@ function get_folding(){
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll();
+    if($results){
     foreach ($results as $row) {
         echo $row['total_folding'];
+    }}
+    else{
+        echo "0";
     }
 }
 
@@ -80,8 +96,12 @@ function get_ready(){
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll();
+    if($results){
     foreach ($results as $row) {
         echo $row['total_ready'];
+    }}
+    else{
+        echo "0";
     }
 }
 
@@ -93,8 +113,12 @@ function get_claimed(){
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll();
+    if ($results){
     foreach ($results as $row) {
         echo $row['total_claimed'];
+    }}
+    else{
+        echo "0";
     }
 }
 
@@ -105,7 +129,11 @@ function get_customers(){
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll();
+    if ($results){
     foreach ($results as $row) {
         echo $row['total_customers'];
+    }}
+    else{
+        echo "0";
     }
 }

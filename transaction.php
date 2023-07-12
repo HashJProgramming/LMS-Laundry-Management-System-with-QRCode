@@ -9,18 +9,17 @@
         $name = explode(' ', $fullname);
         $firstname = $name[0];
         $lastname = $name[1];
-
         $address = $row['address'];
         $contact = $row['contact'];
     }
 
     if(get_transaction($_SESSION['id']) == null){
         $id = '';
-        $fullname = '';
-        $firstname = '';
-        $lastname = '';
-        $address = '';
-        $contact = '';
+        $fullname = 'NONE';
+        $firstname = 'NONE';
+        $lastname = 'NONE';
+        $address = 'NONE';
+        $contact = 'NONE';
     }
 ?>
 
@@ -81,7 +80,11 @@
                 </nav>
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="text-dark mb-0">Transaction</h3><button class="btn btn-primary btn-sm d-none d-sm-inline-block" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;Add Item</button>
+                        <h3 class="text-dark mb-0">Transaction</h3>
+                    </div>
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <button class="btn btn-primary btn-sm d-none d-sm-inline-block" type="button" data-bs-target="#transaction" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;New Transaction</button>
+                        <button class="btn btn-primary btn-sm d-none d-sm-inline-block" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;Add Item</button> 
                     </div>
                     <div class="card shadow mb-3">
                         <div class="card-header py-3">
@@ -94,16 +97,28 @@
                         </div>
                         <div class="card-body">
                             <form>
-                                <div class="row">
+                            <div class="row">
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input class="form-control" type="text" id="first_name" placeholder="John" name="first_name" readonly="" value="<?php echo $firstname ?>"></div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="first_name"><strong>First Name:</strong></label>
+                                            <label class="form-label" id="first_name"><?php echo $firstname ?></label>
+                                        </div>
                                     </div>
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input class="form-control" type="text" id="last_name" placeholder="Doe" name="last_name" readonly="" value="<?php echo $lastname ?>"></div>
+                                        <div class="mb-3">
+                                            <label class="form-label" for="last_name"><strong>Last Name:</strong></label>
+                                            <label class="form-label" id="last_name"><?php echo $lastname ?></label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Address</strong></label><input class="form-control" type="text" placeholder="Address" name="address" readonly="" value="<?php echo $address ?>"></div>
-                                <div class="mb-3"><label class="form-label" for="last_name"><strong>Contact</strong></label><input class="form-control" type="text" placeholder="Contact" name="address" readonly="" value="<?php echo $contact ?>"></div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="address"><strong>Address:</strong></label>
+                                    <label class="form-label" id="address"><?php echo $address ?></label>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="contact"><strong>Contact:</strong></label>
+                                    <label class="form-label" id="contact"><?php echo $contact ?></label>
+                                </div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Kg/Kilo</strong></label><input class="form-control" type="number" value="1" id="first_name-1" placeholder="Kg/Kilogram" name="kilo"></div>

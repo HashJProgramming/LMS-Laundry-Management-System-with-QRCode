@@ -62,7 +62,7 @@
                 </nav>
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="text-dark mb-0">Settings</h3><button class="btn btn-primary btn-sm d-none d-sm-inline-block" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-user-check fa-sm text-white-50"></i>&nbsp;Add Price</button>
+                        <h3 class="text-dark mb-0">Settings</h3>
                     </div>
                     <div class="row mb-3">
                         <div class="col-lg-4">
@@ -102,9 +102,12 @@
                         </div>
                     </div>
                     <div class="card shadow mb-5"></div>
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark mb-0">Pricing Settings</h3><button class="btn btn-primary btn-sm d-none d-sm-inline-block" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-user-check fa-sm text-white-50"></i>&nbsp;Add Price</button>
+                    </div>
                     <div class="card shadow mb-3">
                         <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">Pricing Settings</p>
+                            <p class="text-primary m-0 fw-bold">Pricing List</p>
                         </div>
                                 <div class="card-body">
                                     <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">

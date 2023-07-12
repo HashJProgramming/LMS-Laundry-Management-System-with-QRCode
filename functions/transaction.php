@@ -15,6 +15,11 @@ if (count($results) > 0){
     header('location: ../transaction.php?type=error&message=You have an existing transaction!');
     exit();
 }
+if (empty($id)){
+    header('location: ../transaction.php?type=error&message=Please select a customer!');
+    exit();
+}
+
 
 $sql = "INSERT INTO transactions (user_id, customer_id, status) VALUES (:user_id, :customer_id, 0)";
 $stmt = $db->prepare($sql);
