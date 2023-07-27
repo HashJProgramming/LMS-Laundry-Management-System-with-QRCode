@@ -49,6 +49,7 @@ function price_list (){
 
 function get_transaction ($id){
     global $db;
+    // Need to be fixed 7/15/2023
     $sql = 'SELECT t.id, c.fullname, c.address, c.contact
             FROM transactions AS t
             JOIN customers AS c ON t.customer_id = c.id
