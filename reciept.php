@@ -10,7 +10,7 @@ $type = $_GET['type'];
 $type_price = $_GET['type_price'];
 $products = $_GET['products'];
 $total = $_GET['total'];
-$get_tracking_url = $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/tracking.php?id=' . $id;
+$get_tracking_url = $_SERVER['REMOTE_ADDR'] . dirname($_SERVER['PHP_SELF']) . '/tracking.php?id=' . $id;
 
 ?>
 <!DOCTYPE html>
