@@ -11,5 +11,10 @@ LMS - Laundry Management System with QRCode (Web Application)
 | PHP             | 8.2.4                               |
 | phpMyAdmin      | 5.2.1 (up to date)                   |
 
+## Administrator Username & Password
+```
+Username: admin
+Password: admin
+```
 ![alt text](https://github.com/HashJProgramming/LMS-Laundry-Management-System-with-QRCode/blob/Main/screenshots/1.png)
 ![alt text](https://github.com/HashJProgramming/LMS-Laundry-Management-System-with-QRCode/blob/Main/screenshots/2.png)
