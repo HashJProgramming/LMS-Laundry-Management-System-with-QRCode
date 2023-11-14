@@ -5,7 +5,7 @@ function daily_chart(){
   global $db;
   $sql = "SELECT DATE(created_at) AS date, SUM(total) AS total_sales
     FROM transactions
-    WHERE status >= 1
+    WHERE status > 0 AND status < 4
     GROUP BY DATE(created_at)
     ORDER BY DATE(created_at)";
 
@@ -43,7 +43,7 @@ function month_chart(){
   global $db;
   $sql = "SELECT YEAR(created_at) AS year, MONTH(created_at) AS month, SUM(total) AS total_sales
   FROM transactions
-  WHERE status >= 1
+  WHERE status > 0 AND status < 4
   GROUP BY YEAR(created_at), MONTH(created_at)
   ORDER BY YEAR(created_at), MONTH(created_at)";
 
