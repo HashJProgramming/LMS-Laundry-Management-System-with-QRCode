@@ -5,7 +5,7 @@ function get_monthly(){
     global $db;
     $sql = "SELECT SUM(total) AS total_earnings
             FROM transactions
-            WHERE status = 4
+            WHERE status >= 1
             AND MONTH(created_at) = MONTH(CURRENT_TIMESTAMP)
             AND YEAR(created_at) = YEAR(CURRENT_TIMESTAMP)";
     $stmt = $db->prepare($sql);
@@ -16,7 +16,7 @@ function get_monthly(){
             echo "0";
         }
         else{
-            echo $row['total_earnings'];
+            echo number_format($row['total_earnings'],2);
         }
     }
 }
@@ -26,14 +26,14 @@ function get_yearly(){
     $sql = "SELECT YEAR(CURRENT_TIMESTAMP) AS year,
             SUM(total) AS total_earnings
             FROM transactions
-            WHERE status = 4
+            WHERE status >= 1
             GROUP BY YEAR(created_at) = YEAR(CURRENT_TIMESTAMP)";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll();
     if ($results){
     foreach ($results as $row) {
-        echo $row['total_earnings'];
+            echo number_format($row['total_earnings'],2);
     }}
     else{
         echo "0";

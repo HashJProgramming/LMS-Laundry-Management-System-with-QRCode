@@ -77,39 +77,39 @@ if(isset($_GET['id'])){
                             <div class="progress d-flex justify-content-between d-flex justify-content-between mx-0 mt-0 mb-5">
                                 <div class="progress-bar bg-success progress-bar-animated" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $status?>%;"></div>
                             </div>
-                            <div class="row">
+                            <div class="row row-cols-6 row-cols-md-6 row-cols-xl-6 d-xl-flex justify-content-around gutter-y">
                                 <div class="col">
-                                    <div class="d-lg-flex align-items-center"><i class="fas fa-clipboard-list fa-3x me-lg-4 mb-3 mb-lg-0"></i>
-                                        <div>
+                                    <div class="d-lg-flex align-items-center"><i class="fas fa-clipboard-list fa-2x me-lg-4 mb-3 <?php if ($status >= 10){echo 'text-primary';}?>"></i>
+                                        <div class="d-none d-lg-block">
                                             <p class="fw-bold mb-0">Pending</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="d-lg-flex align-items-center"><i class="fas fa-tshirt fa-3x me-lg-4 mb-3 mb-lg-0"></i>
-                                        <div>
+                                    <div class="d-lg-flex align-items-center"><i class="fas fa-tshirt fa-2x me-lg-4 mb-3 <?php if ($status >= 30){echo 'text-primary';}?>"></i>
+                                        <div class="d-none d-lg-block">
                                             <p class="fw-bold mb-0">Washing</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="d-lg-flex align-items-center"><i class="fas fa-box-open fa-3x me-lg-4 mb-3 mb-lg-0"></i>
-                                        <div>
+                                    <div class="d-lg-flex align-items-center"><i class="fas fa-box-open fa-2x me-lg-4 mb-3 <?php if ($status >= 50){echo 'text-primary';}?>"></i>
+                                        <div class="d-none d-lg-block">
                                             <p class="fw-bold mb-0">Folding</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="d-lg-flex align-items-center"><i class="fas fa-box fa-3x me-lg-4 mb-3 mb-lg-0"></i>
-                                        <div>
+                                    <div class="d-lg-flex align-items-center"><i class="fas fa-box fa-2x me-lg-4 mb-3 <?php if ($status >= 80){echo 'text-primary';}?>"></i>
+                                        <div class="d-none d-lg-block">
                                             <p class="fw-bold mb-1">Ready for</p>
                                             <p class="fw-bold mb-0">Pickup</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="d-lg-flex align-items-center"><i class="fas fa-check fa-3x me-lg-4 mb-3 mb-lg-0"></i>
-                                        <div>
+                                    <div class="d-lg-flex align-items-center"><i class="fas fa-check fa-2x me-lg-4 mb-3 <?php if ($status >= 100){echo 'text-success';}?>"></i>
+                                        <div class="d-none d-lg-block">
                                             <p class="fw-bold mb-1">Order</p>
                                             <p class="fw-bold mb-0">Claim</p>
                                         </div>

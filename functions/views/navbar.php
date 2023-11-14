@@ -13,7 +13,7 @@
     } else {
         ?>
         <li class="nav-item"><a class="nav-link <?= ($currentPage == 'index.php') ? 'active' : ''; ?>" href="index.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-        <a class="nav-link <?= ($currentPage == 'transaction.php') ? 'active' : ''; ?>" href="transaction.php"><i class="far fa-credit-card"></i><span>Transaction</span></a></li>
+        <li class="nav-item"><a class="nav-link <?= ($currentPage == 'transaction.php') ? 'active' : ''; ?>" href="transaction.php"><i class="far fa-credit-card"></i><span>Transaction</span></a></li>
         <li class="nav-item"><a class="nav-link <?= ($currentPage == 'customer.php') ? 'active' : ''; ?>" href="customer.php"><i class="fas fa-user"></i><span>Customers</span></a></li>
         <li class="nav-item"><a class="nav-link <?= ($currentPage == 'queue.php') ? 'active' : ''; ?>" href="queue.php"><i class="fas fa-table"></i><span>Queuing</span></a></li>
         <?php

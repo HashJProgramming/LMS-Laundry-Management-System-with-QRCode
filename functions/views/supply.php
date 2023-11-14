@@ -13,7 +13,7 @@ foreach ($results as $row) {
     <tr>
         <td>#<?php echo $row['id']; ?></td>
         <td><?php echo $row['name']; ?></td>
-        <td><?php echo $row['price']; ?></td>
+        <td>₱<?php echo number_format($row['price'], 2); ?></td>
         <td><?php echo $row['stock']; ?></td>
         <td><?php echo $row['created_at']; ?></td>
         <td class="text-center">

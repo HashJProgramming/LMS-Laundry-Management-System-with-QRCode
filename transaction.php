@@ -21,6 +21,19 @@
         $address = 'NONE';
         $contact = 'NONE';
     }
+    $sql = "SELECT * FROM transactions WHERE user_id = :user_id AND status = 0 ORDER BY id DESC LIMIT 1";
+    $sql = "SELECT t.*, i.price AS price, e.qty AS qty
+    FROM transactions AS t
+    JOIN expenditures AS e ON t.id = e.transaction_id
+    JOIN items AS i ON e.item_id = i.id
+    WHERE t.user_id = :user_id AND status = 0 ORDER BY id DESC LIMIT 1";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':user_id', $_SESSION['id']);
+    $stmt->execute();
+    $results = $stmt->fetch();
+    $price = $results['price'] ?? 0;
+    $quantity =  $results['qty'] ?? 0;
+    $total = $price * $quantity;
 ?>
 
 <!DOCTYPE html>
@@ -86,6 +99,21 @@
                         <button class="btn btn-primary btn-sm d-none d-sm-inline-block" type="button" data-bs-target="#transaction" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;New Transaction</button>
                         <button class="btn btn-primary btn-sm d-none d-sm-inline-block" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;Add Item</button> 
                     </div>
+                    <div class="row">
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Total</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span class="total">₱0</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card shadow mb-3">
                         <div class="card-header py-3">
                             <div class="row">
@@ -121,10 +149,11 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Kg/Kilo</strong></label><input class="form-control" type="number" value="1" id="first_name-1" placeholder="Kg/Kilogram" name="kilo"></div>
+                                        <div class="mb-3"><label class="form-label" ><strong>Kg/Kilo</strong></label>
+                                        <input class="form-control" type="number" value="1" id="kg" placeholder="Kg/Kilogram" name="kilo" min="1"></div>
                                     </div>
                                     <div class="col">
-                                        <div class="mb-3"><label class="form-label" for="last_name"><strong>Type</strong></label><select class="form-select" name="type">
+                                        <div class="mb-3"><label class="form-label"><strong>Type</strong></label><select id="type" class="form-select" name="type">
                                                 <optgroup label="Select Type">
                                                    <?php price_list() ?>
                                                 </optgroup>
@@ -290,6 +319,36 @@
             $('input[name="kilo"]').val(kilo);
             $('input[name="type"]').val(type);
         });
+
+
+    const kilo = document.querySelector('#kg');
+    const stype = document.querySelector('#type');
+    const total = document.querySelector('.total');
+    
+    kilo.addEventListener('change', () => {
+        const kiloValue = kilo.value;
+        const price = stype.options[stype.selectedIndex].text;
+        const priceArr = price.split('|');
+        const priceValue = priceArr[1].replace(/[^\d.-]/g, '');
+        const totalPrice = kiloValue * priceValue + <?=$total?>;
+        total.textContent = '₱'+totalPrice;
+    });
+    
+    stype.addEventListener('change', () => {
+        const kiloValue = kilo.value;
+        const price = stype.options[stype.selectedIndex].text;
+        const priceArr = price.split('|');
+        const priceValue = priceArr[1].replace(/[^\d.-]/g, '');
+        const totalPrice = kiloValue * priceValue + <?=$total?>;
+        total.textContent = '₱'+totalPrice;
+    });
+
+        const kiloValue = kilo.value;
+        const price = stype.options[stype.selectedIndex].text;
+        const priceArr = price.split('|');
+        const priceValue = priceArr[1].replace(/[^\d.-]/g, '');
+        const totalPrice = kiloValue * priceValue + <?=$total?>;
+        total.textContent = '₱'+totalPrice;
     </script>
 </body>
 

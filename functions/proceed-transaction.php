@@ -30,7 +30,10 @@ $stmt->bindParam(':transaction_id', $transaction_id);
 $stmt->bindParam(':user_id', $_SESSION['id']);
 $stmt->execute();
 $results = $stmt->fetchAll();
-
+if (count($results) == 0){
+    header('location: ../transaction.php?type=error&message=No items');
+    exit();
+}
 $item_total = 0;
 foreach ($results as $result){
     $item_total += $result['total'];

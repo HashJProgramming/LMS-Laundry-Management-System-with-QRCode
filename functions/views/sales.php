@@ -5,7 +5,7 @@ $sql = 'SELECT Transactions.id, Transactions.kilo, Transactions.total, Transacti
         FROM Transactions 
         JOIN users ON Transactions.user_id = users.id 
         JOIN customers ON Transactions.customer_id = customers.id 
-        WHERE Transactions.status = 4;';
+        WHERE Transactions.status >= 1;';
 $stmt = $db->prepare($sql);
 $stmt->execute();
 $results = $stmt->fetchAll();
@@ -30,7 +30,7 @@ foreach ($results as $row) {
     echo '<td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">' . $row['fullname'] . '</td>';
     echo '<td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">' . $row['username'] . '</td>';
     echo '<td>' . $row['kilo'] . '</td>';
-    echo '<td>' . $row['total'] . '</td>';
+    echo '<td>₱' . number_format($row['total'], 2) . '</td>';
     echo '<td>' . $status. '</td>';
     echo '<td>' . $row['created_at'] . '</td>';
     echo '</tr>';
