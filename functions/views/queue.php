@@ -37,7 +37,7 @@ foreach ($results as $row) {
             <td class="text-center">
             <?php if ($row['status'] < 5): ?>
                 <a class="mx-1" href="#" data-bs-target="#up" data-bs-toggle="modal" data-id="<?php echo $row['id']?>"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a>
-                <a class="mx-1" href="#" data-bs-target="#down" data-bs-toggle="modal" data-id="<?php echo $row['id']?>"><i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a>
+                <a class="mx-1 <?php if($row['status'] <= 1) { echo 'd-none';}?>" href="#" data-bs-target="#down" data-bs-toggle="modal" data-id="<?php echo $row['id']?>"><i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a>
                 <a class="mx-1" href="tracking.php?id=<?php echo $row['id']; ?>" target="_blank"><i class="far fa-credit-card" style="font-size: 20px;"></i></a>
                 <a class="mx-1" href="#" role="button" data-bs-target="#confirm" data-bs-toggle="modal" data-id="<?php echo $row['id']?>"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a>
             <?php else: ?>
