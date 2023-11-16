@@ -1,8 +1,8 @@
 <?php
     include_once 'functions/authentication.php';
     include_once 'functions/connection.php';
-    
-    $id = $_GET['id'];
+    $sid = $_SESSION['id'];
+    $id = $_GET['id'] ?? $sid;
     $sql = 'SELECT Transactions.id, Transactions.kilo, Transactions.total, Transactions.status, Transactions.created_at, users.username, customers.fullname 
             FROM Transactions 
             JOIN users ON Transactions.user_id = users.id 

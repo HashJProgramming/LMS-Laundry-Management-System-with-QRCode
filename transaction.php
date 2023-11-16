@@ -96,10 +96,10 @@
                         <h3 class="text-dark mb-0">Transaction</h3>
                     </div>
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <button class="btn btn-primary btn-sm d-none d-sm-inline-block" type="button" data-bs-target="#transaction" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;New Transaction</button>
-                        <button class="btn btn-primary btn-sm d-none d-sm-inline-block" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;Add Item</button> 
+                        <button class="btn btn-primary btn-sm mb-1" type="button" data-bs-target="#transaction" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;New Transaction</button>
+                        <button class="btn btn-primary btn-sm mb-1 <?php if ($fullname == 'NONE') {echo 'd-none';}?>" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;Add Item</button> 
                     </div>
-                    <div class="row">
+                    <div class="row <?php if ($fullname == 'NONE') {echo 'd-none';}?>">
                         <div class="col-md-6 col-xl-3 mb-4">
                             <div class="card shadow border-start-primary py-2">
                                 <div class="card-body">
@@ -114,13 +114,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card shadow mb-3">
+                    <div class="card shadow mb-3 <?php if ($fullname == 'NONE') {echo 'd-none';}?>">
                         <div class="card-header py-3">
                             <div class="row">
                                 <div class="col">
                                     <p class="text-primary m-0 fw-bold">Transaction Information</p>
                                 </div>
-                                <div class="col text-end"><button class="btn btn-danger mx-2" type="button" data-bs-target="#confirm" data-bs-toggle="modal">Cancel</button><button class="btn btn-primary" type="button" data-bs-target="#proceed" data-bs-toggle="modal">Proceed</button></div>
+                                <div class="col text-end">
+                                    <button class="btn btn-danger mx-2 mb-1" type="button" data-bs-target="#confirm" data-bs-toggle="modal">Cancel</button>
+                                    <button class="btn btn-primary mb-1" type="button" data-bs-target="#proceed" data-bs-toggle="modal">Proceed</button></div>
                             </div>
                         </div>
                         <div class="card-body">
@@ -163,7 +165,7 @@
                             </form>
                         </div>
                     </div>
-                    <div class="card shadow">
+                    <div class="card shadow <?php if ($fullname == 'NONE') {echo 'd-none';}?>">
                         <div class="card-header py-3">
                             <p class="text-primary m-0 fw-bold">Items</p>
                         </div>
