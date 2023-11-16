@@ -126,7 +126,7 @@ $customer_fullname = $info['fullname'];
                                             echo '<td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">' . $row['fullname'] . '</td>';
                                             echo '<td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">' . $row['username'] . '</td>';
                                             echo '<td>' . $row['kilo'] . '</td>';
-                                            echo '<td>' . $row['total'] . '</td>';
+                                            echo '<td>₱' . number_format($row['total'], 2) . '</td>';
                                             echo '<td>' . $status. '</td>';
                                             echo '<td>' . $row['created_at'] . '</td>';
                                             echo '</tr>';
