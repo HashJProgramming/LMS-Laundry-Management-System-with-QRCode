@@ -1,9 +1,9 @@
 <?php
+include_once 'functions/connection.php';
 session_start();
 if (!isset($_SESSION['username'])) {
     header('location:login.php');
 }
-
 $id = $_GET['id'];
 $kilo = $_GET['kilo'];
 $type = $_GET['type'];
@@ -11,6 +11,16 @@ $type_price = $_GET['type_price'];
 $products = $_GET['products'];
 $total = $_GET['total'];
 $get_tracking_url = getHostByName(getHostName()) . dirname($_SERVER['PHP_SELF']) . '/tracking.php?id=' . $id;
+
+$sql = 'SELECT Transactions.id, customers.fullname AS fullname
+FROM Transactions 
+JOIN users ON Transactions.user_id = users.id 
+JOIN customers ON Transactions.customer_id = customers.id 
+WHERE Transactions.id = :id';
+$stmt = $db->prepare($sql);
+$stmt->execute(['id' => $id]);
+$result = $stmt->fetch();
+
 
 ?>
 <!DOCTYPE html>
@@ -36,7 +46,7 @@ $get_tracking_url = getHostByName(getHostName()) . dirname($_SERVER['PHP_SELF'])
                     <div class="card-body text-center p-4">
                         <span class="badge rounded-pill bg-primary position-absolute top-0 start-50 translate-middle text-uppercase">Reciept</span>
                         <h6 class="text-uppercase text-muted card-subtitle">Total</h6>
-                        <h4 class="display-4 fw-bold card-title">₱<?php echo $total; ?></h4>
+                        <h4 class="display-4 fw-bold card-title">₱<?php echo number_format($total, 2); ?></h4>
                         <canvas id="qr-code"></canvas>
                     </div>
                     <div class="card-footer p-4">
@@ -44,21 +54,25 @@ $get_tracking_url = getHostByName(getHostName()) . dirname($_SERVER['PHP_SELF'])
                             
                             <ul class="list-unstyled">
                                 <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check2-circle">
-                                            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"></path>
-                                            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"></path>
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                                            <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"></path>
+                                        </svg></span><span><strong>Customer : <?php echo $result['fullname']; ?></strong></span></li>
+                                <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check2-circle">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                                            <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"></path>
                                         </svg></span><span><strong>Kg/Kilo : <?php echo $kilo; ?></strong></span></li>
                                 <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check2-circle">
-                                            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"></path>
-                                            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"></path>
-                                        </svg></span><span><strong>Type : <?php echo $type; ?> -&nbsp;₱<?php echo $type_price; ?></strong></span></li>
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                                            <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"></path>
+                                        </svg></span><span><strong>Type : <?php echo $type; ?> -&nbsp;₱<?php echo number_format($type_price, 2); ?></strong></span></li>
                                 <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check2-circle">
-                                            <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"></path>
-                                            <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"></path>
-                                        </svg></span><span><strong>Products</strong>&nbsp;: <strong>₱<?php echo $products; ?></strong></span></li>
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
+                                            <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"></path>
+                                        </svg></span><span><strong>Products</strong>&nbsp;: <strong>₱<?php echo number_format($products, 2); ?></strong></span></li>
                                 <li class="d-flex mb-2"><span class="bs-icon-xs bs-icon-rounded bs-icon-primary-light bs-icon me-2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-check-circle">
                                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"></path>
                                             <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"></path>
-                                        </svg></span><span><strong>Total :&nbsp;₱<?php echo $total; ?></strong></span></li>
+                                        </svg></span><span><strong>Total :&nbsp;₱<?php echo number_format($total, 2); ?></strong></span></li>
                             </ul>
                         </div>
                         <a class="btn btn-primary d-block w-100" role="button" onclick="printReceipt()">Print</a>

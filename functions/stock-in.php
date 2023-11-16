@@ -4,7 +4,7 @@ include_once 'connection.php';
 $id = $_POST['data_id'];
 $qty = $_POST['qty'];
 
-if ($qty < 0) {
+if ($qty < 0) { 
     header('Location: ../supply.php?type=error&message=Invalid quantity!');
     exit();
 }
