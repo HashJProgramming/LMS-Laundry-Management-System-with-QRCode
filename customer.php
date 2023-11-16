@@ -59,7 +59,7 @@
                 </nav>
                 <div class="container-fluid">
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="text-dark mb-0">Customer Management</h3><button class="btn btn-primary btn-sm d-none d-sm-inline-block" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-user-check fa-sm text-white-50"></i>&nbsp;Create Customer</button>
+                        <h3 class="text-dark mb-0">Customer Management</h3><button class="btn btn-primary btn-sm" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-user-check fa-sm text-white-50"></i>&nbsp;Create Customer</button>
                     </div>
                     <div class="card shadow">
                         <div class="card-header py-3">
