@@ -43,9 +43,11 @@ function get_yearly(){
 
 function get_pending(){
     global $db;
+    $current_month = date('m');
     $sql = "SELECT COUNT(*) AS total_pending
             FROM transactions
-            WHERE status = 0";
+            WHERE status = 0
+            AND MONTH(created_at) = $current_month";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll();
@@ -56,9 +58,11 @@ function get_pending(){
 
 function get_processing(){
     global $db;
+    $current_month = date('m');
     $sql = "SELECT COUNT(*) AS total_processing
             FROM transactions
-            WHERE status = 1";
+            WHERE status = 1
+            AND MONTH(created_at) = $current_month";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll();
@@ -73,9 +77,11 @@ function get_processing(){
 
 function get_folding(){
     global $db;
+    $current_month = date('m');
     $sql = "SELECT COUNT(*) AS total_folding
             FROM transactions
-            WHERE status = 2";
+            WHERE status = 2
+            AND MONTH(created_at) = $current_month";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll();
@@ -90,9 +96,11 @@ function get_folding(){
 
 function get_ready(){
     global $db;
+    $current_month = date('m');
     $sql = "SELECT COUNT(*) AS total_ready
             FROM transactions
-            WHERE status = 3";
+            WHERE status = 3
+            AND MONTH(created_at) = $current_month";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll();
@@ -107,9 +115,11 @@ function get_ready(){
 
 function get_claimed(){
     global $db;
+    $current_month = date('m');
     $sql = "SELECT COUNT(*) AS total_claimed
-            FROM transactions
-            WHERE status = 4";
+        FROM transactions
+        WHERE status = 4
+        AND MONTH(created_at) = $current_month";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll();
