@@ -32,17 +32,7 @@
             <div id="content">
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
-                        <ul class="navbar-nav flex-nowrap ms-auto">
-                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
-                                <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
-                                    <form class="me-auto navbar-search w-100">
-                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
-                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </li>
-                        </ul>
+                        
                     </div>
                 </nav>
                 <section class="position-relative py-4 py-xl-5">
@@ -60,8 +50,11 @@
                                                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"></path>
                                             </svg></div>
                                         <form action="functions/login.php" method="post">
-                                            <div class="mb-3 text-center"><input class="form-control" type="text" name="username" placeholder="Username" value="<?php echo isset($_COOKIE['username']) ? $_COOKIE['username'] : ''; ?>"></div>
-                                            <div class="mb-3 text-center"><input class="form-control" type="password" name="password" placeholder="Password" value="<?php echo isset($_COOKIE['password']) ? $_COOKIE['password'] : ''; ?>"></div>
+                                            <div class="mb-3 text-center"><input class="form-control form-control-lg" type="text" name="username" placeholder="Username" value="<?php echo isset($_COOKIE['username']) ? $_COOKIE['username'] : ''; ?>"></div>
+                                            <div class="mb-3 text-center"></div>
+                                            <div class="input-group mb-3">
+                                                <input class="form-control" type="password" name="password" placeholder="Password" value="<?php echo isset($_COOKIE['password']) ? $_COOKIE['password'] : ''; ?>">
+                                            </div>
                                             <div class="mb-3">
                                                 <input class="form-check-input" name="remember" type="checkbox" aria-label="remember" <?php echo isset($_COOKIE['username']) ? 'checked' : ''; ?>>
                                                 <label class="form-check-label text-dark" for="remember">
@@ -99,7 +92,14 @@
     <script src="assets/js/listTable.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/sweetalert.min.js"></script>
+    <script src="assets/js/togglepassword.js"></script>
     <script>
+        $(() => {
+
+            $('[type="password"]').togglepassword('btn btn-sm');
+
+        });
+
         const urlParams = new URLSearchParams(window.location.search);
         const type = urlParams.get('type');
         const message = urlParams.get('message');
