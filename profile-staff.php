@@ -2,8 +2,7 @@
     include_once 'functions/authentication.php';
     include_once 'functions/connection.php';
     
-    $id = $_SESSION['id'];
-    $username = $_SESSION['username'];
+    $id = $_GET['id'];
     $sql = 'SELECT Transactions.id, Transactions.kilo, Transactions.total, Transactions.status, Transactions.created_at, users.username, customers.fullname 
             FROM Transactions 
             JOIN users ON Transactions.user_id = users.id 
@@ -13,6 +12,15 @@
     $stmt->bindParam(':id', $id);
     $stmt->execute();
     $results = $stmt->fetchAll();
+
+    $sql = 'SELECT username 
+        FROM users 
+        WHERE id = :id';
+$stmt = $db->prepare($sql);
+$stmt->bindParam(':id', $id);
+$stmt->execute();
+$info = $stmt->fetch();
+$username = $info['username'] ?? 'None';
 ?>
 
 <!DOCTYPE html>
