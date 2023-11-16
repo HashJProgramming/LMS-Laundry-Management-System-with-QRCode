@@ -74,7 +74,7 @@
                                             <th>Total</th>
                                             <th>Status</th>
                                             <th>Date</th>
-                                            <th class="text-center">Option</th>
+                                            <th class="text-center">Options</th>
                                         </tr>
                                     </thead>
                                     <tbody>

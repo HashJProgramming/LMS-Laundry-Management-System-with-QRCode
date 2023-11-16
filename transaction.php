@@ -179,7 +179,7 @@
                                             <th>Price</th>
                                             <th>Qty</th>
                                             <th>Date</th>
-                                            <th class="text-center">Option</th>
+                                            <th class="text-center">Options</th>
                                         </tr>
                                     </thead>
                                     <tbody>

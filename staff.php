@@ -73,7 +73,7 @@
                                             <th>ID</th>
                                             <th>Staff</th>
                                             <th>Date Created</th>
-                                            <th class="text-center">Option</th>
+                                            <th class="text-center">Options</th>
                                         </tr>
                                     </thead>
                                     <tbody>

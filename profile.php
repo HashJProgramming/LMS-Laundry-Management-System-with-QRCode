@@ -118,7 +118,7 @@
                                                     <th>Name</th>
                                                     <th>Price</th>
                                                     <th>Date Created</th>
-                                                    <th class="text-center">Option</th>
+                                                    <th class="text-center">Options</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
