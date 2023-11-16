@@ -88,7 +88,7 @@
                         <h3 class="text-dark mb-0">Transaction</h3>
                     </div>
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <button class="btn btn-primary btn-sm mb-1" type="button" data-bs-target="#transaction" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;New Transaction</button>
+                        <button class="btn btn-primary btn-sm mb-1 <?php if ($fullname != 'NONE') {echo 'd-none';}?>" type="button" data-bs-target="#transaction" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;New Transaction</button>
                         <button class="btn btn-primary btn-sm mb-1 <?php if ($fullname == 'NONE') {echo 'd-none';}?>" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;Add Item</button> 
                     </div>
                     <div class="row <?php if ($fullname == 'NONE') {echo 'd-none';}?>">
