@@ -53,7 +53,7 @@
                                             <div class="mb-3 text-center"><input class="form-control form-control-lg" type="text" name="username" placeholder="Username" value="<?php echo isset($_COOKIE['username']) ? $_COOKIE['username'] : ''; ?>"></div>
                                             <div class="mb-3 text-center"></div>
                                             <div class="input-group mb-3">
-                                                <input class="form-control" type="password" name="password" placeholder="Password" value="<?php echo isset($_COOKIE['password']) ? $_COOKIE['password'] : ''; ?>">
+                                                <input class="form-control form-control-lg" type="password" name="password" placeholder="Password" value="<?php echo isset($_COOKIE['password']) ? $_COOKIE['password'] : ''; ?>">
                                             </div>
                                             <div class="mb-3">
                                                 <input class="form-check-input" name="remember" type="checkbox" aria-label="remember" <?php echo isset($_COOKIE['username']) ? 'checked' : ''; ?>>

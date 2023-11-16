@@ -12,7 +12,7 @@
             btnclass = btnclass ?? '';
             return $(this).replaceWith(
                 $('<div class="input-group mb-3"></div>')
-                    .append($('<input type="password" class="' + classlist + '" id="' + id + '" name="' + name + '" value="' + value + '"' + autofocus + '>'))
+                    .append($('<input type="password" class="' + classlist + '" id="' + id + '" name="' + name + '" placeholder="Password" value="' + value + '"' + autofocus + '>'))
                     .append('<span class="input-group-text" id="basic-addon1"><button type="button" class="' + btnclass + '" data-role="togglepassword" data-target="#' + id + '" title="' + title + '" tabindex="-1">' + content + '</button></span>')
             );
         });
