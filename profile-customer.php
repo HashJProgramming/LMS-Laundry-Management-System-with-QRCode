@@ -15,7 +15,14 @@ $stmt->bindParam(':id', $customer_id);
 $stmt->execute();
 $results = $stmt->fetchAll();
 
-$customer_fullname = $results[0]['fullname'];
+$sql = 'SELECT fullname 
+        FROM customers 
+        WHERE id = :id';
+$stmt = $db->prepare($sql);
+$stmt->bindParam(':id', $customer_id);
+$stmt->execute();
+$info = $stmt->fetch();
+$customer_fullname = $info['fullname'];
 
 ?>
 
