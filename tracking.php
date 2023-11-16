@@ -14,10 +14,8 @@ if(isset($_GET['id'])){
 
     $status = $result['status'];
     $queue_number = $result['queue_number'];
-    if($status == 0){
-        $status = 10;
-    }else if($status == 1){
-        $status = 30;
+    if($status == 1){
+        $status = 20;
     }else if($status == 2){
         $status = 50;
     }else if($status == 3){
@@ -79,28 +77,21 @@ if(isset($_GET['id'])){
                             </div>
                             <div class="row row-cols-6 row-cols-md-6 row-cols-xl-6 d-xl-flex justify-content-around gutter-y">
                                 <div class="col">
-                                    <div class="d-lg-flex align-items-center"><i class="fas fa-clipboard-list fa-2x me-lg-4 mb-3 <?php if ($status >= 10){echo 'text-primary';}?>"></i>
-                                        <div class="d-none d-lg-block">
-                                            <p class="fw-bold mb-0">Pending</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="d-lg-flex align-items-center"><i class="fas fa-tshirt fa-2x me-lg-4 mb-3 <?php if ($status >= 30){echo 'text-primary';}?>"></i>
+                                    <div class="d-lg-flex align-items-center"><i class="fas fa-tshirt fa-2x me-lg-4 mb-3 <?php if ($status >= 20){echo 'text-success';}?>"></i>
                                         <div class="d-none d-lg-block">
                                             <p class="fw-bold mb-0">Washing</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="d-lg-flex align-items-center"><i class="fas fa-box-open fa-2x me-lg-4 mb-3 <?php if ($status >= 50){echo 'text-primary';}?>"></i>
+                                    <div class="d-lg-flex align-items-center"><i class="fas fa-box-open fa-2x me-lg-4 mb-3 <?php if ($status >= 50){echo 'text-success';}?>"></i>
                                         <div class="d-none d-lg-block">
                                             <p class="fw-bold mb-0">Folding</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="d-lg-flex align-items-center"><i class="fas fa-box fa-2x me-lg-4 mb-3 <?php if ($status >= 80){echo 'text-primary';}?>"></i>
+                                    <div class="d-lg-flex align-items-center"><i class="fas fa-box fa-2x me-lg-4 mb-3 <?php if ($status >= 80){echo 'text-success';}?>"></i>
                                         <div class="d-none d-lg-block">
                                             <p class="fw-bold mb-1">Ready for</p>
                                             <p class="fw-bold mb-0">Pickup</p>
