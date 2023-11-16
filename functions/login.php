@@ -17,7 +17,13 @@ if ($user && password_verify($password, $user['password'])) {
     $_SESSION['username'] = $username;
     $_SESSION['level'] = $user['level'];
     $_SESSION['id'] = $user['id'];
-    
+    if (isset($_POST['remember'])) {
+        setcookie('username', $username, time() + (86400 * 30), "/");
+        setcookie('password', $password, time() + (86400 * 30), "/");
+    } else {
+        setcookie('username', '', time() - 3600, "/");
+        setcookie('password', '', time() - 3600, "/");
+    }
     generate_logs('Login', $username.'| Logged in');
     header('location: ../index.php');
 } else {
