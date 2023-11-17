@@ -95,7 +95,7 @@
                     </div>
                     <div class="card shadow mb-5"></div>
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="text-dark mb-0">Pricing Settings</h3><button class="btn btn-primary btn-sm d-none d-sm-inline-block" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-user-check fa-sm text-white-50"></i>&nbsp;Add Price</button>
+                        <h3 class="text-dark mb-0">Pricing Settings</h3><button class="btn btn-primary" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-user-check fa-sm text-white-50"></i>&nbsp;Add Price</button>
                     </div>
                     <div class="card shadow mb-3">
                         <div class="card-header py-3">
@@ -144,7 +144,7 @@
                 <div class="modal-body">
                     <form action="functions/add-price.php" method="post">
                         <input class="form-control" type="text" name="type" placeholder="Name" style="margin-bottom: 15px;" required="">
-                        <input class="form-control" type="number" name="price" placeholder="Price" required="">
+                        <input class="form-control" type="number" name="price" placeholder="Price" required="" min="1" value="1">
                     
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
