@@ -111,7 +111,7 @@
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Contact</strong>&nbsp;No.</label><input class="form-control" type="text" placeholder="Contact No." name="contact" required="" minlength="11" maxlength="11"></div>
                     
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
             </div>
         </div>
@@ -137,7 +137,7 @@
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Contact</strong>&nbsp;No.</label><input class="form-control" type="text" placeholder="Contact No." name="contact" minlength="11" maxlength="11"></div>
                     
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
             </div>
         </div>
@@ -153,7 +153,7 @@
                 </div>
                 <form action="functions/remove-customer.php" method="post">
                     <input type="hidden" name="data_id">
-                    <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Remove</button></div>
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">No</button><button class="btn btn-danger" type="submit">Yes</button></div>
                 </form>
             </div>
         </div>
