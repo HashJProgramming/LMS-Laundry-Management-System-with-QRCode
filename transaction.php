@@ -226,7 +226,7 @@
                 </div>
                 <form action="functions/remove-product.php" method="post">
                     <input type="hidden" name="data_id">
-                    <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Remove</button></div>
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">No</button><button class="btn btn-danger" type="submit">Yes</button></div>
                 </form>
             </div>
         </div>
@@ -242,7 +242,7 @@
                 </div>
                 <form action="functions/cancel-transaction.php" method="post">
                     <input type="hidden" name="data_id" value="<?php echo $id; ?>">
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Cancel</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">No</button><button class="btn btn-danger" type="submit">Yes</button></div>
                 </form>
             </div>
         </div>
@@ -260,7 +260,7 @@
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <input type="hidden" name="kilo">
                     <input type="hidden" name="type">
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Proceed</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">No</button><button class="btn btn-primary" type="submit">Yes</button></div>
                 </form>
             </div>
         </div>
