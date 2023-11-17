@@ -22,18 +22,22 @@
         $contact = 'NONE';
     }
     $sql = "SELECT * FROM transactions WHERE user_id = :user_id AND status = 0 ORDER BY id DESC LIMIT 1";
+
     $sql = "SELECT t.*, i.price AS price, e.qty AS qty
     FROM transactions AS t
     JOIN expenditures AS e ON t.id = e.transaction_id
     JOIN items AS i ON e.item_id = i.id
-    WHERE t.user_id = :user_id AND status = 0 ORDER BY id DESC LIMIT 1";
+    WHERE t.user_id = :user_id AND status = 0";
     $stmt = $db->prepare($sql);
     $stmt->bindParam(':user_id', $_SESSION['id']);
     $stmt->execute();
-    $results = $stmt->fetch();
-    $price = $results['price'] ?? 0;
-    $quantity =  $results['qty'] ?? 0;
-    $total = $price * $quantity;
+    $results = $stmt->fetchall();
+    $total = 0;
+    foreach ($results as $row) {
+        $price = $row['price'];
+        $quantity = $row['qty'];
+        $total += $price * $quantity;
+    }
 ?>
 
 <!DOCTYPE html>
