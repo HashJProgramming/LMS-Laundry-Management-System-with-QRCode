@@ -210,7 +210,7 @@
                         <div class="mb-3"><label class="form-label"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Qty" min="1" value="1"></div>
                    
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Add</button></div>
+                <div class="modal-footer"><button class="btn btn-primary" type="submit">Add</button></div>
                 </form>
             </div>
         </div>
