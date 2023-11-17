@@ -108,7 +108,7 @@
                         </div>
                     
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
             </div>
         </div>
@@ -133,7 +133,7 @@
                         </div>
                     
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
             </div>
         </div>
@@ -149,7 +149,7 @@
                         <input type="hidden" name="data_id">
                     <p>Are you sure you want to remove this customer?</p>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Remove</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">No</button><button class="btn btn-danger" type="submit">Yes</button></div>
                 </form>
             </div>
         </div>
