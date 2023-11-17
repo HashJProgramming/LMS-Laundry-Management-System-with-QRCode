@@ -104,7 +104,7 @@
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Qty</strong></label><input class="form-control" type="number" name="qty" placeholder="Quantity" required="" min="1" value="1"></div>
                   
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
             </div>
         </div>
@@ -121,7 +121,7 @@
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" required=""></div>
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Price</strong></label><input class="form-control" type="number" name="price" placeholder="Price" required="" min="1"></div>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
             </div>
         </div>
@@ -138,7 +138,7 @@
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Stock In" required="" min="1" value="1"></div>
                     
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
             </div>
         </div>
@@ -155,7 +155,7 @@
                         <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Stock Out" required="" min="1" value="1"></div>
                    
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
             </div>
         </div>
@@ -171,7 +171,7 @@
                 </div>
                 <form action="functions/remove-supply.php" method="post">
                     <input type="hidden" name="data_id">
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Remove</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">No</button><button class="btn btn-danger" type="submit">Yes</button></div>
                 </form>
             </div>
         </div>
