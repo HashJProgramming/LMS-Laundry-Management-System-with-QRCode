@@ -1,6 +1,6 @@
 <?php
 include_once 'functions/connection.php';
-$sql = 'SELECT l.status, l.id, l.kilo, t.id, t.customer_id, t.total, l.created_at, c.fullname, ROW_NUMBER() OVER (ORDER BY status DESC, kilo ASC) AS queue_number 
+$sql = 'SELECT l.status, l.id AS laundry_id, l.kilo, t.id, t.customer_id, t.total, l.created_at, c.fullname, ROW_NUMBER() OVER (ORDER BY status DESC, kilo ASC) AS queue_number 
         FROM laundry AS l
         JOIN transactions AS t ON l.transaction_id = t.id
         JOIN customers AS c ON t.customer_id = c.id
@@ -36,8 +36,8 @@ foreach ($results as $row) {
             <td><?php echo $row['created_at']; ?></td>
             <td class="text-center">
             <?php if ($row['status'] < 5): ?>
-                <a class="mx-1" href="#" data-bs-target="#up" data-bs-toggle="modal" data-id="<?php echo $row['id']?>"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a>
-                <a class="mx-1 <?php if($row['status'] <= 1) { echo 'd-none';}?>" href="#" data-bs-target="#down" data-bs-toggle="modal" data-id="<?php echo $row['id']?>"><i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a>
+                <a class="mx-1" href="#" data-bs-target="#up" data-bs-toggle="modal" data-id="<?php echo $row['laundry_id']?>"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a>
+                <a class="mx-1 <?php if($row['status'] <= 1) { echo 'd-none';}?>" href="#" data-bs-target="#down" data-bs-toggle="modal" data-id="<?php echo $row['laundry_id']?>"><i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a>
                 <a class="mx-1" href="tracking.php?id=<?php echo $row['id']; ?>" target="_blank"><i class="far fa-credit-card" style="font-size: 20px;"></i></a>
                 <a class="mx-1" href="#" role="button" data-bs-target="#confirm" data-bs-toggle="modal" data-id="<?php echo $row['id']?>"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a>
             <?php else: ?>

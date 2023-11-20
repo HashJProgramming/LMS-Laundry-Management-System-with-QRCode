@@ -3,7 +3,7 @@ include_once 'connection.php';
 
 $id = $_POST['data_id'];
 
-$sql = "SELECT status FROM transactions WHERE id = :id";
+$sql = "SELECT status FROM laundry WHERE id = :id";
 $statement = $db->prepare($sql);
 $statement->bindValue(':id', $id);
 $statement->execute();
@@ -13,7 +13,7 @@ if($result['status'] == 0){
     exit();
 }
 
-$sql = "UPDATE transactions SET
+$sql = "UPDATE laundry SET
         status = status - 1
         WHERE id = :id";
 $statement = $db->prepare($sql);
