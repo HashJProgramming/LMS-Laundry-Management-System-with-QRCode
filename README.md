@@ -16,5 +16,6 @@ LMS - Laundry Management System with QRCode (Web Application)
 Username: admin
 Password: admin
 ```
-![alt text](https://github.com/HashJProgramming/LMS-Laundry-Management-System-with-QRCode/blob/Main/screenshots/1.png)
-![alt text](https://github.com/HashJProgramming/LMS-Laundry-Management-System-with-QRCode/blob/Main/screenshots/2.png)
+![Alt text](screenshots/image.png)
+![Alt text](screenshots/image-1.png)
+![Alt text](screenshots/image-2.png)
