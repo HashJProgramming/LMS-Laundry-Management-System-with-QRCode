@@ -19,8 +19,8 @@ foreach ($results as $row) {
         <td class="text-center">
             <a class="mx-1 text-decoration-none text-success" href="#" data-bs-target="#stock-in" data-bs-toggle="modal" data-id="<?php echo $row['id']?>"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i> Stock In</a>
             <a class="mx-1 text-decoration-none" href="#" data-bs-target="#stock-out" data-bs-toggle="modal" data-id="<?php echo $row['id']?>"><i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i> Stock Out</a>
-            <a class="mx-1" href="#" data-bs-target="#update" data-bs-toggle="modal" data-id="<?php echo $row['id']?>" data-name="<?php echo $row['name']?>" data-unit="<?php echo $row['unit']?>"><i class="far fa-edit text-warning" style="font-size: 20px;"></i></a>
-            <a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal" data-id="<?php echo $row['id']?>"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a>
+            <a class="mx-1 text-decoration-none text-warning" href="#" data-bs-target="#update" data-bs-toggle="modal" data-id="<?php echo $row['id']?>" data-name="<?php echo $row['name']?>" data-unit="<?php echo $row['unit']?>"><i class="far fa-edit text-warning" style="font-size: 20px;"></i> Update</a>
+            <a class="mx-1 text-decoration-none text-danger" href="#" data-bs-target="#remove" data-bs-toggle="modal" data-id="<?php echo $row['id']?>"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i> Remove</a>
         </td>
         <?php
 

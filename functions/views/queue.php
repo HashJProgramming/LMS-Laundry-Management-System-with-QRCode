@@ -38,10 +38,10 @@ foreach ($results as $row) {
             <td><?php echo $row['created_at']; ?></td>
             <td class="text-center">
             <?php if ($row['status'] < 5): ?>
-                <a class="mx-1" href="#" data-bs-target="#up" data-bs-toggle="modal" data-id="<?php echo $row['laundry_id']?>"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i></a>
-                <a class="mx-1 <?php if($row['status'] <= 1) { echo 'd-none';}?>" href="#" data-bs-target="#down" data-bs-toggle="modal" data-id="<?php echo $row['laundry_id']?>"><i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i></a>
-                <a class="mx-1" href="tracking.php?id=<?php echo $row['id']; ?>" target="_blank"><i class="far fa-credit-card" style="font-size: 20px;"></i></a>
-                <a class="mx-1" href="#" role="button" data-bs-target="#confirm" data-bs-toggle="modal" data-id="<?php echo $row['id']?>"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a>
+                <a class="mx-1 text-decoration-none text-success" href="#" data-bs-target="#up" data-bs-toggle="modal" data-id="<?php echo $row['laundry_id']?>"><i class="far fa-arrow-alt-circle-up text-success" style="font-size: 20px;"></i> Proceed</a>
+                <a class="mx-1 text-decoration-none <?php if($row['status'] <= 1) { echo 'd-none';}?>" href="#" data-bs-target="#down" data-bs-toggle="modal" data-id="<?php echo $row['laundry_id']?>"><i class="far fa-arrow-alt-circle-down" style="font-size: 20px;"></i> Undo</a>
+                <a class="mx-1 text-decoration-none" href="tracking.php?id=<?php echo $row['id']; ?>" target="_blank"><i class="far fa-credit-card" style="font-size: 20px;"></i> Tracking</a>
+                <a class="mx-1 text-decoration-none text-danger" href="#" role="button" data-bs-target="#confirm" data-bs-toggle="modal" data-id="<?php echo $row['id']?>"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i> Remove</a>
             <?php else: ?>
                 <a class="mx-1" href="#"><i class="far fa-circle text-warning" style="font-size: 20px;"></i></a>
                 <a class="mx-1" href="#"><i class="far fa-circle text-warning" style="font-size: 20px;"></i></a>
