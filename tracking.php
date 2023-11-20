@@ -44,7 +44,7 @@ $result = $stmt->fetchAll();
                                 <div class="col-xl-6">
                                     <div class="d-flex justify-content-between align-items-center mb-5">
                                         <div>
-                                            <a class="text-decoration-none" href="reciept.php?id=8&type=invoice"><h2 class="mb-0"><i class="fas fa-print"></i> Invoice&nbsp;<span class="text-primary font-weight-bold">#<?php echo $id; ?></span></h2></a>
+                                            <a class="text-decoration-none" href="reciept.php?id=<?=$id?>&type=invoice"><h2 class="mb-0"><i class="fas fa-print"></i> Invoice&nbsp;<span class="text-primary font-weight-bold">#<?php echo $id; ?></span></h2></a>
                                         </div>
                                     </div>
                                 </div>
