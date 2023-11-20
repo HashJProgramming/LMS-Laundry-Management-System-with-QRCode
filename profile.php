@@ -44,7 +44,7 @@
                             
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">My Account</span><i class="far fa-user"></i></a>
-                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="profile.php"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item" href="logs.php"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="profile.php"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item <?php if($_SESSION['level'] == '1'){echo 'd-none';}?>" href="logs.php"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
                                         <div class="dropdown-divider"></div><a class="dropdown-item" href="functions/logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
                                 </div>
@@ -95,7 +95,7 @@
                     </div>
                     <div class="card shadow mb-5"></div>
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                        <h3 class="text-dark mb-0">Pricing Settings</h3><button class="btn btn-primary btn-sm d-none d-sm-inline-block" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-user-check fa-sm text-white-50"></i>&nbsp;Add Price</button>
+                        <h3 class="text-dark mb-0">Pricing Settings</h3><button class="btn btn-primary" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-user-check fa-sm text-white-50"></i>&nbsp;Add Price</button>
                     </div>
                     <div class="card shadow mb-3">
                         <div class="card-header py-3">
@@ -144,7 +144,7 @@
                 <div class="modal-body">
                     <form action="functions/add-price.php" method="post">
                         <input class="form-control" type="text" name="type" placeholder="Name" style="margin-bottom: 15px;" required="">
-                        <input class="form-control" type="number" name="price" placeholder="Price" required="">
+                        <input class="form-control" type="number" name="price" placeholder="Price" required="" min="1" value="1">
                     
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>

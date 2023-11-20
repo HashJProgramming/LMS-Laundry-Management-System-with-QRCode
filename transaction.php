@@ -74,7 +74,7 @@
                             
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="d-none d-lg-inline me-2 text-gray-600 small">My Account</span><i class="far fa-user"></i></a>
-                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="profile.php"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item" href="logs.php"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="profile.php"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item <?php if($_SESSION['level'] == '1'){echo 'd-none';}?>" href="logs.php"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
                                         <div class="dropdown-divider"></div><a class="dropdown-item" href="functions/logout.php"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
                                 </div>
@@ -229,6 +229,60 @@
                         <div class="mb-3"><label class="form-label"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Qty" min="1" value="1"></div>
                    
                 </div>
+                <div class="modal-footer"><button class="btn btn-primary" type="submit">Add</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="laundry-add">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Laundry</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="functions/add-laundry.php" method="post">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" ><strong>Kg/Kilo</strong></label>
+                                <input class="form-control" type="number" value="1" id="kg" placeholder="Kg/Kilogram" name="kilo" min="1"></div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label"><strong>Type</strong></label><select id="type" class="form-select" name="type">
+                                        <optgroup label="Select Type">
+                                        <?php price_list() ?>
+                                        </optgroup>
+                                    </select></div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Add</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="laundry-add">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Laundry</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="functions/add-laundry.php" method="post">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" ><strong>Kg/Kilo</strong></label>
+                                <input class="form-control" type="number" value="1" id="kg" placeholder="Kg/Kilogram" name="kilo" min="1"></div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label"><strong>Type</strong></label><select id="type" class="form-select" name="type">
+                                        <optgroup label="Select Type">
+                                        <?php price_list() ?>
+                                        </optgroup>
+                                    </select></div>
+                            </div>
+                        </div>
+                </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Add</button></div>
                 </form>
             </div>
@@ -272,6 +326,38 @@
                 </div>
                 <form action="functions/remove-product.php" method="post">
                     <input type="hidden" name="data_id">
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">No</button><button class="btn btn-danger" type="submit">Yes</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="laundry-remove">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Remove Laundry</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to remove this Laundry?</p>
+                </div>
+                <form action="functions/remove-laundry.php" method="post">
+                    <input type="hidden" name="data_id">
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Remove</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="laundry-remove">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Remove Laundry</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to remove this Laundry?</p>
+                </div>
+                <form action="functions/remove-laundry.php" method="post">
+                    <input type="hidden" name="data_id">
                     <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Remove</button></div>
                 </form>
             </div>
@@ -304,7 +390,7 @@
                 </div>
                 <form action="functions/cancel-transaction.php" method="post">
                     <input type="hidden" name="data_id" value="<?php echo $id; ?>">
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Cancel</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">No</button><button class="btn btn-danger" type="submit">Yes</button></div>
                 </form>
             </div>
         </div>
@@ -322,7 +408,7 @@
                     <input type="hidden" name="id" value="<?php echo $id; ?>">
                     <input type="hidden" name="kilo">
                     <input type="hidden" name="type">
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Proceed</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">No</button><button class="btn btn-primary" type="submit">Yes</button></div>
                 </form>
             </div>
         </div>
