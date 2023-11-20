@@ -154,7 +154,6 @@
     <script src="assets/js/vfs_fonts.js"></script>
     <script src="assets/js/buttons.html5.min.js"></script>
     <script src="assets/js/buttons.print.min.js"></script>
-    <script src="assets/js/listTable.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/sweetalert.min.js"></script>
     <script>
@@ -182,7 +181,36 @@
             console.log(id); 
             $('input[name="data_id"]').val(id);
         });
+        $(document).ready(function() {
+            $('#dataTable').DataTable( {
+                dom: 'Blfrtip',
+                buttons: [
+                    {
+                        extend: 'excel',
+                        className: 'btn btn-primary',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6]
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        className: 'btn btn-primary',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6]
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        className: 'btn btn-primary',
+                        exportOptions: {
+                            columns: [0, 1, 2, 3, 4, 5, 6]
+                        }
+                    }
+                ]
+            } );
             
+            
+        } );
     </script>
 </body>
 
