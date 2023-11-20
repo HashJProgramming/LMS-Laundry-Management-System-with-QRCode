@@ -5,7 +5,7 @@ function get_monthly(){
     global $db;
     $sql = "SELECT SUM(total) AS total_earnings
             FROM transactions
-            WHERE status >= 1
+            WHERE MONTH(created_at) = MONTH(CURRENT_TIMESTAMP)
             AND MONTH(created_at) = MONTH(CURRENT_TIMESTAMP)
             AND YEAR(created_at) = YEAR(CURRENT_TIMESTAMP)";
     $stmt = $db->prepare($sql);
@@ -26,7 +26,7 @@ function get_yearly(){
     $sql = "SELECT YEAR(CURRENT_TIMESTAMP) AS year,
             SUM(total) AS total_earnings
             FROM transactions
-            WHERE status >= 1
+            WHERE YEAR(created_at) = YEAR(CURRENT_TIMESTAMP)
             GROUP BY YEAR(created_at) = YEAR(CURRENT_TIMESTAMP)";
     $stmt = $db->prepare($sql);
     $stmt->execute();
@@ -45,7 +45,7 @@ function get_pending(){
     global $db;
     $current_month = date('m');
     $sql = "SELECT COUNT(*) AS total_pending
-            FROM transactions
+            FROM laundry
             WHERE status = 0
             AND MONTH(created_at) = $current_month";
     $stmt = $db->prepare($sql);
@@ -60,7 +60,7 @@ function get_processing(){
     global $db;
     $current_month = date('m');
     $sql = "SELECT COUNT(*) AS total_processing
-            FROM transactions
+            FROM laundry
             WHERE status = 1
             AND MONTH(created_at) = $current_month";
     $stmt = $db->prepare($sql);
@@ -79,7 +79,7 @@ function get_folding(){
     global $db;
     $current_month = date('m');
     $sql = "SELECT COUNT(*) AS total_folding
-            FROM transactions
+            FROM laundry
             WHERE status = 2
             AND MONTH(created_at) = $current_month";
     $stmt = $db->prepare($sql);
@@ -98,7 +98,7 @@ function get_ready(){
     global $db;
     $current_month = date('m');
     $sql = "SELECT COUNT(*) AS total_ready
-            FROM transactions
+            FROM laundry
             WHERE status = 3
             AND MONTH(created_at) = $current_month";
     $stmt = $db->prepare($sql);
@@ -117,7 +117,7 @@ function get_claimed(){
     global $db;
     $current_month = date('m');
     $sql = "SELECT COUNT(*) AS total_claimed
-        FROM transactions
+        FROM laundry
         WHERE status = 4
         AND MONTH(created_at) = $current_month";
     $stmt = $db->prepare($sql);

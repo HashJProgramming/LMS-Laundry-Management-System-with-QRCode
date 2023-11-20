@@ -21,19 +21,6 @@
         $address = 'NONE';
         $contact = 'NONE';
     }
-    $sql = "SELECT * FROM transactions WHERE user_id = :user_id AND status = 0 ORDER BY id DESC LIMIT 1";
-    $sql = "SELECT t.*, i.price AS price, e.qty AS qty
-    FROM transactions AS t
-    JOIN expenditures AS e ON t.id = e.transaction_id
-    JOIN items AS i ON e.item_id = i.id
-    WHERE t.user_id = :user_id AND status = 0 ORDER BY id DESC LIMIT 1";
-    $stmt = $db->prepare($sql);
-    $stmt->bindParam(':user_id', $_SESSION['id']);
-    $stmt->execute();
-    $results = $stmt->fetch();
-    $price = $results['price'] ?? 0;
-    $quantity =  $results['qty'] ?? 0;
-    $total = $price * $quantity;
 ?>
 
 <!DOCTYPE html>
@@ -89,7 +76,6 @@
                     </div>
                     <div class="d-sm-flex justify-content-between align-items-center mb-4">
                         <button class="btn btn-primary btn-sm mb-1 <?php if ($fullname != 'NONE') {echo 'd-none';}?>" type="button" data-bs-target="#transaction" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;New Transaction</button>
-                        <button class="btn btn-primary btn-sm mb-1 <?php if ($fullname == 'NONE') {echo 'd-none';}?>" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;Add Item</button> 
                     </div>
                     <div class="row <?php if ($fullname == 'NONE') {echo 'd-none';}?>">
                         <div class="col-md-6 col-xl-3 mb-4">
@@ -141,46 +127,67 @@
                                     <label class="form-label" for="contact"><strong>Contact:</strong></label>
                                     <label class="form-label" id="contact"><?php echo $contact ?></label>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="mb-3"><label class="form-label" ><strong>Kg/Kilo</strong></label>
-                                        <input class="form-control" type="number" value="1" id="kg" placeholder="Kg/Kilogram" name="kilo" min="1"></div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="mb-3"><label class="form-label"><strong>Type</strong></label><select id="type" class="form-select" name="type">
-                                                <optgroup label="Select Type">
-                                                   <?php price_list() ?>
-                                                </optgroup>
-                                            </select></div>
-                                    </div>
-                                </div>
                             </form>
                         </div>
                     </div>
-                    <div class="card shadow <?php if ($fullname == 'NONE') {echo 'd-none';}?>">
-                        <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">Items</p>
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                                <button class="btn btn-primary btn-sm mb-1 <?php if ($fullname == 'NONE') {echo 'd-none';}?>" type="button" data-bs-target="#add" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;Add Item</button> 
+                            </div>
+                                <div class="card shadow <?php if ($fullname == 'NONE') {echo 'd-none';}?>">
+                                    <div class="card-header py-3">
+                                        <p class="text-primary m-0 fw-bold">Items</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+                                            <table class="table table-striped my-0" id="dataTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Item</th>
+                                                        <th>Unit</th>
+                                                        <th>Qty</th>
+                                                        <th class="text-center">Options</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php include_once 'functions/views/products.php' ?>
+                                                </tbody>
+                                                <tfoot>
+                                                    <tr></tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
-                        <div class="card-body">
-                            <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
-                                <table class="table table-striped my-0" id="dataTable">
-                                    <thead>
-                                        <tr>
-                                            <th>ID #</th>
-                                            <th>Item</th>
-                                            <th>Price</th>
-                                            <th>Qty</th>
-                                            <th>Date</th>
-                                            <th class="text-center">Options</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php include_once 'functions/views/products.php' ?>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr></tr>
-                                    </tfoot>
-                                </table>
+                        <div class="col">
+                            <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                                <button class="btn btn-primary btn-sm mb-1 <?php if ($fullname == 'NONE') {echo 'd-none';}?>" type="button" data-bs-target="#laundry-add" data-bs-toggle="modal"><i class="fas fa-truck-loading fa-sm text-white-50"></i>&nbsp;Add Laundry</button> 
+                            </div>
+                            <div class="card shadow <?php if ($fullname == 'NONE') {echo 'd-none';}?>">
+                                <div class="card-header py-3">
+                                    <p class="text-primary m-0 fw-bold">Laundry</p>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+                                        <table class="table table-striped my-0" id="dataTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Kilo</th>
+                                                    <th>Type</th>
+                                                    <th class="text-center">Options</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php include_once 'functions/views/laundry.php' ?>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr></tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -209,6 +216,33 @@
                             </select></div>
                         <div class="mb-3"><label class="form-label"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Qty" min="1" value="1"></div>
                    
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Add</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="laundry-add">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add Laundry</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="functions/add-laundry.php" method="post">
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label" ><strong>Kg/Kilo</strong></label>
+                                <input class="form-control" type="number" value="1" id="kg" placeholder="Kg/Kilogram" name="kilo" min="1"></div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3"><label class="form-label"><strong>Type</strong></label><select id="type" class="form-select" name="type">
+                                        <optgroup label="Select Type">
+                                        <?php price_list() ?>
+                                        </optgroup>
+                                    </select></div>
+                            </div>
+                        </div>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Add</button></div>
                 </form>
@@ -281,7 +315,6 @@
     <script src="assets/js/vfs_fonts.js"></script>
     <script src="assets/js/buttons.html5.min.js"></script>
     <script src="assets/js/buttons.print.min.js"></script>
-    <script src="assets/js/listTable.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/sweetalert.min.js"></script>
     <script>
@@ -313,36 +346,6 @@
             $('input[name="kilo"]').val(kilo);
             $('input[name="type"]').val(type);
         });
-
-
-    const kilo = document.querySelector('#kg');
-    const stype = document.querySelector('#type');
-    const total = document.querySelector('.total');
-    
-    kilo.addEventListener('change', () => {
-        const kiloValue = kilo.value;
-        const price = stype.options[stype.selectedIndex].text;
-        const priceArr = price.split('|');
-        const priceValue = priceArr[1].replace(/[^\d.-]/g, '');
-        const totalPrice = kiloValue * priceValue + <?=$total?>;
-        total.textContent = '₱'+totalPrice;
-    });
-    
-    stype.addEventListener('change', () => {
-        const kiloValue = kilo.value;
-        const price = stype.options[stype.selectedIndex].text;
-        const priceArr = price.split('|');
-        const priceValue = priceArr[1].replace(/[^\d.-]/g, '');
-        const totalPrice = kiloValue * priceValue + <?=$total?>;
-        total.textContent = '₱'+totalPrice;
-    });
-
-        const kiloValue = kilo.value;
-        const price = stype.options[stype.selectedIndex].text;
-        const priceArr = price.split('|');
-        const priceValue = priceArr[1].replace(/[^\d.-]/g, '');
-        const totalPrice = kiloValue * priceValue + <?=$total?>;
-        total.textContent = '₱'+totalPrice;
     </script>
 </body>
 

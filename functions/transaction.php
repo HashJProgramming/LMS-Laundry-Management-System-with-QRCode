@@ -1,11 +1,14 @@
 <?php
 include_once 'connection.php';
 $id = $_POST['id'];
-if (!$_SESSION['id']){
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+if (!$_SESSION['id']){
+    
+}
 
-$sql = "SELECT * FROM transactions WHERE user_id = :user_id AND status = 0 ORDER BY id DESC LIMIT 1";
+$sql = "SELECT * FROM transactions WHERE user_id = :user_id AND status = 'pending' ORDER BY id DESC LIMIT 1";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':user_id', $_SESSION['id']);
 $stmt->execute();
@@ -21,7 +24,7 @@ if (empty($id)){
 }
 
 
-$sql = "INSERT INTO transactions (user_id, customer_id, status) VALUES (:user_id, :customer_id, 0)";
+$sql = "INSERT INTO transactions (user_id, customer_id, status) VALUES (:user_id, :customer_id, 'pending')";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':user_id', $_SESSION['id']);
 $stmt->bindParam(':customer_id', $id);

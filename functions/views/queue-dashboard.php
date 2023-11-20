@@ -1,9 +1,10 @@
 <?php
 include_once 'functions/connection.php';
-$sql = 'SELECT t.status, t.id, t.kilo, t.total, t.total, t.created_at, c.fullname, ROW_NUMBER() OVER (ORDER BY status DESC, kilo ASC) AS queue_number 
-        FROM Transactions AS t
+$sql = 'SELECT l.status, l.id, l.kilo, t.total, l.created_at, c.fullname, ROW_NUMBER() OVER (ORDER BY status DESC, kilo ASC) AS queue_number 
+        FROM laundry AS l
+        JOIN transactions AS t ON l.transaction_id = t.id
         JOIN customers AS c ON t.customer_id = c.id
-        WHERE t.status > 0 AND t.status < 4
+        WHERE l.status > 0 AND l.status < 4
         ';
 
 $stmt = $db->prepare($sql);

@@ -38,9 +38,6 @@ function price_list (){
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll();
-    ?>
-    <option>SELECT TYPE</option>
-    <?php
     foreach ($results as $row) {
     $name = $row['name'];
     ?>
@@ -56,7 +53,7 @@ function get_transaction ($id){
     $sql = 'SELECT t.id, c.fullname, c.address, c.contact
             FROM transactions AS t
             JOIN customers AS c ON t.customer_id = c.id
-            WHERE t.status = 0 AND t.user_id = '.$id.';
+            WHERE t.status = "pending" AND t.user_id = '.$id.';
             ';
     $stmt = $db->prepare($sql);
     $stmt->execute();

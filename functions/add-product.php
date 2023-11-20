@@ -1,6 +1,8 @@
 <?php
-session_start();
 include_once 'connection.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 if (!isset($_SESSION['id'])){
     header('Location: ../transaction.php?type=error&message=User not logged in!');

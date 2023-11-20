@@ -5,11 +5,11 @@ if (!$_SESSION['id']){
 }
 $user_id = $_SESSION['id'];
 
-$sql = 'SELECT ex.id, ex.qty, ex.created_at, i.name, i.unit
-        FROM expenditures AS ex
-        JOIN items AS i ON ex.item_id = i.id
-        JOIN transactions AS t ON ex.transaction_id = t.id
-        WHERE ex.user_id = :user_id AND t.status = "pending"';
+$sql = 'SELECT l.id, l.kilo, l.type, p.name AS type, p.price AS price
+        FROM laundry AS l
+        JOIN transactions AS t ON l.transaction_id = t.id
+        JOIN prices AS p ON l.type = p.id
+        WHERE t.user_id = :user_id AND t.status = "pending"';
 
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':user_id', $user_id);
@@ -20,9 +20,8 @@ foreach ($results as $row) {
 
 ?>
     <tr>
-        <td><i class="fas fa-shopping-cart text-gray-600"></i>  <?php echo $row['name']; ?></td>
-        <td><?php echo $row['unit']; ?></td>
-        <td><?php echo $row['qty']; ?></td>
+        <td><i class="fas fa-shopping-basket text-gray-600"></i>  <?php echo $row['kilo']; ?>kg</td>
+        <td><?php echo $row['type']; ?>  ₱<?php echo number_format($row['price'], 2)?></td>
         <td class="text-center">
         <a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal" data-id="<?php echo $row['id']?>" ><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a>
         </td>  
