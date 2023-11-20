@@ -5,10 +5,11 @@
         header('Location: customers.php?type=error&message=Customer not found!');
     }
     $customer_id = $_GET['id'];
-$sql = 'SELECT Transactions.id, Transactions.kilo, Transactions.total, Transactions.status, Transactions.created_at, users.username, customers.fullname 
-        FROM Transactions 
-        JOIN users ON Transactions.user_id = users.id 
-        JOIN customers ON Transactions.customer_id = customers.id 
+$sql = 'SELECT l.id, l.kilo, t.total, l.status, l.created_at, users.username, customers.fullname 
+        FROM laundry AS l 
+        JOIN transactions AS t ON l.transaction_id = t.id
+        JOIN users ON t.user_id = users.id 
+        JOIN customers ON t.customer_id = customers.id 
         WHERE customer_id = :id';
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':id', $customer_id);
