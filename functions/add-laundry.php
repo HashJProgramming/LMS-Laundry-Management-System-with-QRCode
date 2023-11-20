@@ -3,6 +3,12 @@ include_once 'connection.php';
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+if($_POST['type'] == ""){
+    header('Location: ../transaction.php?type=error&message=Please fill in all fields!');
+     exit();
+}
+
 $id = $_SESSION['id'];
 $kilo = $_POST['kilo'];
 $type = $_POST['type'];
