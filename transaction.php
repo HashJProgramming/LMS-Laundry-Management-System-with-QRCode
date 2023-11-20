@@ -226,7 +226,7 @@
                                     <?php items_list() ?>
                                 </optgroup>
                             </select></div>
-                        <div class="mb-3"><label class="form-label"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Qty" min="1" value="1"></div>
+                        <div class="mb-3"><label class="form-label"><strong>Quantity</strong></label><input class="form-control" type="number"  name="qty" pattern="\d+" placeholder="Qty" min="1" value="1"></div>
                    
                 </div>
                 <div class="modal-footer"><button class="btn btn-primary" type="submit">Add</button></div>
@@ -245,7 +245,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" ><strong>Kg/Kilo</strong></label>
-                                <input class="form-control" type="number" value="1" id="kg" placeholder="Kg/Kilogram" name="kilo" min="1"></div>
+                                <input class="form-control" type="number" value="1" id="kg" placeholder="Kg/Kilogram" name="kilo" min="1" pattern="\d+"></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label"><strong>Type</strong></label><select id="type" class="form-select" name="type">
@@ -272,7 +272,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" ><strong>Kg/Kilo</strong></label>
-                                <input class="form-control" type="number" value="1" id="kg" placeholder="Kg/Kilogram" name="kilo" min="1"></div>
+                                <input class="form-control" type="number" value="1" id="kg" placeholder="Kg/Kilogram" name="kilo" min="1" pattern="\d+"></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label"><strong>Type</strong></label><select id="type" class="form-select" name="type">
@@ -299,7 +299,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="mb-3"><label class="form-label" ><strong>Kg/Kilo</strong></label>
-                                <input class="form-control" type="number" value="1" id="kg" placeholder="Kg/Kilogram" name="kilo" min="1"></div>
+                                <input class="form-control" type="number" value="1" id="kg" placeholder="Kg/Kilogram" name="kilo" min="1" pattern="\d+"></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label"><strong>Type</strong></label><select id="type" class="form-select" name="type">
