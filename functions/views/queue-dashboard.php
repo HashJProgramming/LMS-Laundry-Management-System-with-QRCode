@@ -28,10 +28,9 @@ foreach ($results as $row) {
     ?>
         <tr>
             <td><?php echo $row['queue_number']; ?></td>
+            <td>#<?php echo $row['id']; ?></td>
             <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png"><?php echo $row['fullname']; ?></td>
-            <td><?php echo $row['id']; ?></td>
             <td><?php echo $row['kilo']; ?></td>
-            <td>₱<?php echo number_format($row['total'] , 2); ?></td>
             <td><?php echo $status ?></td>
             <td><?php echo $row['created_at']; ?></td>
         </tr>

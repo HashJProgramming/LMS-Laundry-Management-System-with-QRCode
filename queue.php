@@ -60,9 +60,10 @@
                                     <thead>
                                         <tr>
                                             <th>Queue </th>
+                                            <th>Invoice</th>
                                             <th>Customer</th>
-                                            <th>Transaction ID</th>
                                             <th>Kg/Kilo</th>
+                                            <th>Type & Price</th>
                                             <th>Total</th>
                                             <th>Status</th>
                                             <th>Date</th>
@@ -189,21 +190,21 @@
                         extend: 'excel',
                         className: 'btn btn-primary',
                         exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5, 6]
+                            columns: [0, 1, 2, 3, 4, 5, 7]
                         }
                     },
                     {
                         extend: 'pdf',
                         className: 'btn btn-primary',
                         exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5, 6]
+                            columns: [0, 1, 2, 3, 4, 5, 7]
                         }
                     },
                     {
                         extend: 'print',
                         className: 'btn btn-primary',
                         exportOptions: {
-                            columns: [0, 1, 2, 3, 4, 5, 6]
+                            columns: [0, 1, 2, 3, 4, 5, 7]
                         }
                     }
                 ]

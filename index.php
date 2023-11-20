@@ -220,10 +220,9 @@
                                             <thead>
                                             <tr>
                                                 <th>Queue </th>
+                                                <th>Invoice</th>
                                                 <th>Customer</th>
-                                                <th>Transaction ID</th>
                                                 <th>Kg/Kilo</th>
-                                                <th>Total</th>
                                                 <th>Status</th>
                                                 <th>Date</th>
                                             </tr>

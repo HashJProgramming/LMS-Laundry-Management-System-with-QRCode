@@ -28,7 +28,7 @@ foreach ($results as $row) {
     }
 
     echo '<tr>';
-    echo '<td>' . $row['id'] . '</td>';
+    echo '<td>#' . $row['id'] . '</td>';
     echo '<td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">' . $row['fullname'] . '</td>';
     echo '<td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">' . $row['username'] . '</td>';
     echo '<td>' . $row['kilo'] . '</td>';
