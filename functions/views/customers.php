@@ -14,7 +14,7 @@ $firstname = $fullname[0];
 $lastname = $fullname[1];
 ?>
     <tr>
-        <td>#<?php echo $row['id']; ?></td>
+        <td><?php echo $row['id']; ?></td>
         <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png"><?php echo $row['fullname']; ?></td>
         <td><?php echo $row['address']; ?></td>
         <td><?php echo $row['contact']; ?></td>

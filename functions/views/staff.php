@@ -13,7 +13,7 @@ foreach ($results as $row) {
 
     ?>
         <tr>
-            <td>#<?php echo $row['id']; ?></td>
+            <td><?php echo $row['id']; ?></td>
             <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png"><?php echo $row['username']; ?></td>
             <td><?php echo $row['created_at']; ?></td>
             <td class="text-center">

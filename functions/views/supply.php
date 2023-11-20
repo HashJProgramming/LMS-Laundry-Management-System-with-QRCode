@@ -11,7 +11,7 @@ foreach ($results as $row) {
 
 ?>
     <tr>
-        <td>#<?php echo $row['id']; ?></td>
+        <td><?php echo $row['id']; ?></td>
         <td><?php echo $row['name']; ?></td>
         <td><?php echo $row['unit']; ?></td>
         <td><?php echo $row['stock']; ?></td>

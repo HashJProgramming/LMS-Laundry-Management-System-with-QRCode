@@ -74,9 +74,9 @@ $result = $stmt->fetchAll();
                             ?>
                                 <div class="d-flex justify-content-between align-items-center mb-5">
                                     <div>
-                                        <h2 class="mb-0">Queue <span class="text-primary font-weight-bold">#<?php echo $queue_number; ?></span></h2>
-                                        <h4 class="mb-0">Type - <span class="text-primary font-weight-bold"><?php echo $row['name']; ?></span></h4>
-                                        <h4 class="mb-0">Load - <span class="text-primary font-weight-bold"><?php echo $row['kilo']; ?>kg</span></h4>
+                                        <h2 class="mb-2">Queue <span class="text-primary font-weight-bold">#<?php echo $queue_number; ?></span></h2>
+                                        <h5 class="mb-0 ms-5 font-monospace">Type - <span class="text-primary font-weight-bold"><?php echo $row['name']; ?></span></h5>
+                                        <h5 class="mb-0 ms-5 font-monospace">Load - <span class="text-primary font-weight-bold"><?php echo $row['kilo']; ?>kg</span></h5>
                                     </div>
                                 </div>
                                 <div class="progress d-flex justify-content-between d-flex justify-content-between mx-0 mt-0 mb-5">

@@ -31,7 +31,7 @@ if (count($results) == 0){
     exit();
 }
 
-$sql = 'SELECT l.id, p.price AS price
+$sql = 'SELECT l.id, l.kilo, p.price AS price
         FROM laundry AS l
         JOIN transactions AS t ON l.transaction_id = t.id
         JOIN prices AS p ON l.type = p.id
@@ -43,7 +43,7 @@ $results = $stmt->fetchAll();
 
 $total_price = 0;
 foreach ($results as $row) {
-    $total_price += $row['price'];
+    $total_price += $row['price'] * $row['kilo'];
 }
 
 echo $total_price;
