@@ -47,7 +47,7 @@
             CREATE TABLE IF NOT EXISTS items (
               id INT PRIMARY KEY AUTO_INCREMENT,
               name VARCHAR(255),
-              price DECIMAL(10,2),
+              unit VARCHAR(255),
               stock INT,
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )

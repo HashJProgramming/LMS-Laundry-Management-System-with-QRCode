@@ -64,8 +64,8 @@
                                         <tr>
                                             <th>ID #</th>
                                             <th>Item Name</th>
-                                            <th>Price</th>
-                                            <th>Stocks</th>
+                                            <th>Unit</th>
+                                            <th>Quanitiy</th>
                                             <th>Date</th>
                                             <th class="text-center">Options</th>
                                         </tr>
@@ -99,9 +99,9 @@
                 </div>
                 <div class="modal-body">
                     <form action="functions/add-supply.php" method="post">
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" required=""></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Price</strong></label><input class="form-control" type="number" name="price" placeholder="Price" required="" min="1" value="1"></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Qty</strong></label><input class="form-control" type="number" name="qty" placeholder="Quantity" required="" min="1" value="1"></div>
+                        <div class="mb-3"><label class="form-label"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" required=""></div>
+                        <div class="mb-3"><label class="form-label"><strong>Item Unit</strong></label><input class="form-control" type="text" name="unit" placeholder="Unit" required=""></div>
+                        <div class="mb-3"><label class="form-label"><strong>Qty</strong></label><input class="form-control" type="number" name="qty" placeholder="Quantity" required="" min="1" value="1"></div>
                   
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
@@ -118,8 +118,8 @@
                 <div class="modal-body">
                     <form action="functions/update-supply.php" method="post">
                         <input type="hidden" name="data_id">
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" required=""></div>
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Item Price</strong></label><input class="form-control" type="number" name="price" placeholder="Price" required="" min="1"></div>
+                        <div class="mb-3"><label class="form-label"><strong>Item Name</strong></label><input class="form-control" type="text" name="name" placeholder="Name" required=""></div>
+                        <div class="mb-3"><label class="form-label"><strong>Item Unit</strong></label><input class="form-control" type="text" name="unit" placeholder="Unit" required=""></div>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
                 </form>
@@ -135,7 +135,7 @@
                 <div class="modal-body">
                     <form action="functions/stock-in.php" method="post">
                         <input type="hidden" name="data_id">
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Stock In" required="" min="1" value="1"></div>
+                        <div class="mb-3"><label class="form-label"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Stock In" required="" min="1" value="1"></div>
                     
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
@@ -152,7 +152,7 @@
                 <div class="modal-body">
                     <form action="functions/stock-out.php" method="post">
                         <input type="hidden" name="data_id">
-                        <div class="mb-3"><label class="form-label" for="first_name"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Stock Out" required="" min="1" value="1"></div>
+                        <div class="mb-3"><label class="form-label"><strong>Quantity</strong></label><input class="form-control" type="number" name="qty" placeholder="Stock Out" required="" min="1" value="1"></div>
                    
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
@@ -207,11 +207,11 @@
         $('a[data-bs-target="#update"]').on('click', function() {
                 var id = $(this).data('id');
                 var name = $(this).data('name');
-                var price = $(this).data('price');
-                console.log(id, name, price);
+                var unit = $(this).data('unit');
+                console.log(id, name, unit);
                 $('input[name="data_id"]').val(id);
                 $('input[name="name"]').val(name);
-                $('input[name="price"]').val(price);
+                $('input[name="unit"]').val(unit);
 
             });
         $('a[data-bs-target="#remove"]').on('click', function() {

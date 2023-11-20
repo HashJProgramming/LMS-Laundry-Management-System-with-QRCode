@@ -3,7 +3,7 @@ include_once 'connection.php';
 
 $id = $_POST['data_id'];
 $name = $_POST['name'];
-$price = $_POST['price'];
+$unit = $_POST['unit'];
 
 $sql = "SELECT * FROM items WHERE name = :name AND id != :id";
 $stmt = $db->prepare($sql);
@@ -18,12 +18,12 @@ if ($stmt->rowCount() > 0) {
 
 $sql = "UPDATE items SET
         name = :name,
-        price = :price
+        unit = :unit
         WHERE id = :id";
         
 $statement = $db->prepare($sql);
 $statement->bindParam(':name', $name);
-$statement->bindParam(':price', $price);
+$statement->bindParam(':unit', $unit);
 $statement->bindParam(':id', $id);
 $statement->execute();
 

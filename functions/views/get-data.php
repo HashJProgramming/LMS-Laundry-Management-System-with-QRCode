@@ -38,10 +38,13 @@ function price_list (){
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $results = $stmt->fetchAll();
-
+    ?>
+    <option>SELECT TYPE</option>
+    <?php
     foreach ($results as $row) {
     $name = $row['name'];
     ?>
+        
         <option value="<?php echo $row['id']; ?>"><?php echo $name; ?> | ₱<?php echo $row['price']; ?></option>
     <?php
     }
