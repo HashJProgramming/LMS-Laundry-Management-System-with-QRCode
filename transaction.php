@@ -2,7 +2,6 @@
     include_once 'functions/authentication.php';
     include_once 'functions/views/get-data.php';
 
-
    foreach (get_transaction($_SESSION['id']) as $row) {
         $id = $row['id'];
         $fullname = $row['fullname'];
@@ -20,6 +19,19 @@
         $lastname = 'NONE';
         $address = 'NONE';
         $contact = 'NONE';
+    }
+    $sql = "SELECT l.kilo, p.price
+            FROM laundry AS l
+            JOIN transactions AS t ON l.transaction_id = t.id
+            JOIN prices AS p ON l.type = p.id
+            WHERE t.user_id = :user_id AND t.status = 'pending'";
+    $stmt = $db->prepare($sql);
+    $stmt->bindParam(':user_id', $_SESSION['id']);
+    $stmt->execute();
+    $results = $stmt->fetchAll();
+    $total_price = 0;
+    foreach ($results as $row) {
+        $total_price += $row['price'] * $row['kilo'];
     }
 ?>
 
@@ -84,7 +96,7 @@
                                     <div class="row align-items-center no-gutters">
                                         <div class="col me-2">
                                             <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Total</span></div>
-                                            <div class="text-dark fw-bold h5 mb-0"><span class="total">₱0</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span class="total">₱<?= number_format($total_price, 2)?></span></div>
                                         </div>
                                         <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
                                     </div>
@@ -265,6 +277,22 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="laundry-remove">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Remove Laundry</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to remove this Laundry?</p>
+                </div>
+                <form action="functions/remove-laundry.php" method="post">
+                    <input type="hidden" name="data_id">
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Remove</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" role="dialog" tabindex="-1" id="confirm">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -326,8 +354,12 @@
         } else if (type == 'error') {
             swal("Error!", message, "error");
         }
-
         $('a[data-bs-target="#remove"]').on('click', function() {
+                var id = $(this).data('id');
+                console.log(id); 
+                $('input[name="data_id"]').val(id);
+            });
+        $('a[data-bs-target="#laundry-remove"]').on('click', function() {
                 var id = $(this).data('id');
                 console.log(id); 
                 $('input[name="data_id"]').val(id);

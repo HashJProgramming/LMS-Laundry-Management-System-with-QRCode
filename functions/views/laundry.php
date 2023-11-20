@@ -23,7 +23,7 @@ foreach ($results as $row) {
         <td><i class="fas fa-shopping-basket text-gray-600"></i>  <?php echo $row['kilo']; ?>kg</td>
         <td><?php echo $row['type']; ?>  ₱<?php echo number_format($row['price'], 2)?></td>
         <td class="text-center">
-        <a class="mx-1" href="#" data-bs-target="#remove" data-bs-toggle="modal" data-id="<?php echo $row['id']?>" ><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a>
+        <a class="mx-1" href="#" data-bs-target="#laundry-remove" data-bs-toggle="modal" data-id="<?php echo $row['id']?>" ><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i></a>
         </td>  
 
         <?php

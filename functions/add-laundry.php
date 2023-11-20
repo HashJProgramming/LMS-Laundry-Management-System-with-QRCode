@@ -14,7 +14,7 @@ $stmt->execute();
 
 $results = $stmt->fetch();
 $transaction_id = $results['id'];
-$status = 1;
+$status = 0;
 
 $sql = "INSERT INTO laundry (transaction_id, kilo, type, status) VALUES (:transaction_id, :kilo, :type, :status)";
 $stmt = $db->prepare($sql);
