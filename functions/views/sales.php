@@ -29,7 +29,7 @@ foreach ($results as $row) {
 
     echo '<tr>';
     ?>
-        <td><a class="mx-1 text-decoration-none" target="_blank" href="reciept.php?id=<?php echo $row['id'] ?>"><i class="fas fa-print" style="font-size: 20px;"></i> <?= $row['id'] ?></a></td>
+        <td><a class="mx-1 text-decoration-none" target="_blank" href="reciept.php?id=<?php echo $row['id'] ?>&type=view"><i class="fas fa-print" style="font-size: 20px;"></i> <?= $row['id'] ?></a></td>
     <?php
     echo '<td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">' . $row['fullname'] . '</td>';
     echo '<td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">' . $row['username'] . '</td>';

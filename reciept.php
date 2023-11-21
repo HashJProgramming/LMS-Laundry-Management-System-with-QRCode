@@ -90,7 +90,7 @@ foreach($result as $row){
     <script src="assets/js/qrious.min.js"></script>
 </head>
 
-<body onload="printPageAndRedirect()">
+<body class="mx-5" onload="<?php if(isset($_GET['type'])) { if($_GET['type'] == 'invoice') { echo 'printPageAndRedirect()'; }}?>">
     <div class="table-responsive">
         <table class="table">
             <thead>
