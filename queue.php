@@ -99,11 +99,11 @@
                     <h4 class="modal-title">Cancel Transaction</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to cancel this transaction?</p>
+                    <p>Are you sure you want to cancel this transaction?.</p>
                 </div>
                 <form action="functions/cancel-transaction.php" method="post">
                     <input type="hidden" name="data_id">
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger" type="submit">Cancel</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">No</button><button class="btn btn-danger" type="submit">Yes</button></div>
                 </form>
             </div>
         </div>
@@ -119,7 +119,7 @@
                 </div>
                 <form action="functions/up-transaction.php" method="post">
                     <input type="hidden" name="data_id">
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">No</button><button class="btn btn-primary" type="submit">Yes</button></div>
                 </form>
             </div>
         </div>
@@ -135,7 +135,7 @@
                 </div>
                 <form action="functions/down-transaction.php" method="post">
                     <input type="hidden" name="data_id">
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">No</button><button class="btn btn-primary" type="submit">Yes</button></div>
                 </form>
             </div>
         </div>

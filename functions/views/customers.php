@@ -22,7 +22,7 @@ $lastname = $fullname[1];
         <td class="text-center">
             <a class="mx-1 text-decoration-none" href="profile-customer.php?id=<?php echo $row['id'] ?>"><i class="far fa-eye" style="font-size: 20px;"></i> View Transactions</a>
             <a class="mx-1 text-decoration-none text-warning" href="#" data-bs-target="#update" data-bs-toggle="modal" data-id="<?php echo $row['id']?>" data-firstname="<?php echo $firstname ?>" data-lastname="<?php echo $lastname ?>" data-address="<?php echo $row['address'] ?>" data-contact="<?php echo $row['contact'] ?>" ><i class="far fa-edit text-warning" style="font-size: 20px;"></i> Update</a>
-            <a class="mx-1text-decoration-none text-danger" href="#" data-bs-target="#remove" data-bs-toggle="modal" data-id="<?php echo $row['id']?>"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i> Remove</a>
+            <a class="mx-1 text-decoration-none text-danger" href="#" data-bs-target="#remove" data-bs-toggle="modal" data-id="<?php echo $row['id']?>"><i class="far fa-trash-alt text-danger" style="font-size: 20px;"></i> Remove</a>
         </td>
 
         <?php
