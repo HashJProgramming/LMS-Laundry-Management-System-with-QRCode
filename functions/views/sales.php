@@ -11,7 +11,7 @@ $sql = 'SELECT t.id, l.kilo, l.status AS stats, p.price, p.name, t.status, t.cre
 $stmt = $db->prepare($sql);
 $stmt->execute();
 $results = $stmt->fetchAll();
-
+ 
 foreach ($results as $row) {
     if($row['stats'] == 0){
     $status = 'Pending';
@@ -28,7 +28,9 @@ foreach ($results as $row) {
     }
 
     echo '<tr>';
-    echo '<td>' . $row['id'] . '</td>';
+    ?>
+        <td><a class="mx-1 text-decoration-none" target="_blank" href="reciept.php?id=<?php echo $row['id'] ?>"><i class="fas fa-print" style="font-size: 20px;"></i> <?= $row['id'] ?></a></td>
+    <?php
     echo '<td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">' . $row['fullname'] . '</td>';
     echo '<td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">' . $row['username'] . '</td>';
     echo '<td>' . $row['kilo'] . '</td>';
