@@ -11,8 +11,20 @@ $stmt->execute();
 $results = $stmt->fetchAll();
 
 $transaction_id = $results[0]['id'];
+
 if (count($results) == 0){
     header('location: ../transaction.php?type=error&message=No transaction found!');
+    exit();
+}
+
+$sql = "SELECT * FROM laundry WHERE transaction_id = :transaction_id AND status = 0";
+$stmt = $db->prepare($sql);
+$stmt->bindParam(':transaction_id', $transaction_id);
+$stmt->execute();
+$results = $stmt->fetchAll();
+
+if (count($results) == 0){
+    header('location: ../transaction.php?type=error&message=No laundry found!');
     exit();
 }
 
