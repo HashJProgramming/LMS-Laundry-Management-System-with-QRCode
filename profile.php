@@ -180,7 +180,7 @@
                     <h4 class="modal-title">Remove Price</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="functions/remove-staff.php" method="post">
+                    <form action="functions/remove-price.php" method="post">
                         <input type="hidden" name="data_id">
                     <p>Are you sure you want to remove this Price?</p>
                 </div>

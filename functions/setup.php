@@ -117,6 +117,4 @@
     } catch(PDOException $e) {
         die("Error creating database: " . $e->getMessage());
     }
-    
-    $db = null;
 ?>
