@@ -230,7 +230,7 @@ foreach($result as $row){
                 setTimeout(function() {
                     window.setTimeout(function() {
                         window.print();
-                        window.location.href = 'transaction.php';
+                        window.location.href = '<?php if(isset($_GET['type'])){ echo 'tracking.php?id='.$_GET['id']; }?>';
                     }, 500);
                 }, 500);
             }
