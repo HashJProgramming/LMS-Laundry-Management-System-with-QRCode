@@ -87,7 +87,7 @@ $result = $stmt->fetchAll();
                                     <div class="col">
                                         <div class="d-lg-flex align-items-center"><i class="fas fa-tshirt fa-2x me-lg-4 mb-3 <?php if ($status >= 20) {
                                                                                                                                     echo 'text-success';
-                                                                                                                                } ?>"></i>
+                                                                                                                                } ?>" data-bs-toggle="tooltip" data-bss-tooltip="" title="Washing"></i>
                                             <div class="d-none d-lg-block">
                                                 <p class="fw-bold mb-0">Washing</p>
                                             </div>
@@ -96,7 +96,7 @@ $result = $stmt->fetchAll();
                                     <div class="col">
                                         <div class="d-lg-flex align-items-center"><i class="fas fa-box-open fa-2x me-lg-4 mb-3 <?php if ($status >= 50) {
                                                                                                                                     echo 'text-success';
-                                                                                                                                } ?>"></i>
+                                                                                                                                } ?>" data-bs-toggle="tooltip" data-bss-tooltip="" title="Folding"></i>
                                             <div class="d-none d-lg-block">
                                                 <p class="fw-bold mb-0">Folding</p>
                                             </div>
@@ -105,7 +105,7 @@ $result = $stmt->fetchAll();
                                     <div class="col">
                                         <div class="d-lg-flex align-items-center"><i class="fas fa-box fa-2x me-lg-4 mb-3 <?php if ($status >= 80) {
                                                                                                                                 echo 'text-success';
-                                                                                                                            } ?>"></i>
+                                                                                                                            } ?>" data-bs-toggle="tooltip" data-bss-tooltip="" title="Ready for Pickup"></i>
                                             <div class="d-none d-lg-block">
                                                 <p class="fw-bold mb-1">Ready for</p>
                                                 <p class="fw-bold mb-0">Pickup</p>
@@ -115,7 +115,7 @@ $result = $stmt->fetchAll();
                                     <div class="col">
                                         <div class="d-lg-flex align-items-center"><i class="fas fa-check fa-2x me-lg-4 mb-3 <?php if ($status >= 100) {
                                                                                                                                 echo 'text-success';
-                                                                                                                            } ?>"></i>
+                                                                                                                            } ?>" data-bs-toggle="tooltip" data-bss-tooltip="" title="Order Claimed"></i>
                                             <div class="d-none d-lg-block">
                                                 <p class="fw-bold mb-1">Order</p>
                                                 <p class="fw-bold mb-0">Claim</p>
@@ -134,6 +134,7 @@ $result = $stmt->fetchAll();
     </section>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/dataTables.bootstrap5.min.js"></script>
     <script src="assets/js/dataTables.buttons.min.js"></script>
