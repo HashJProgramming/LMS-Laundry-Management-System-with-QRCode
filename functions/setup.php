@@ -1,8 +1,8 @@
 <?php
-    $database = 'u613467773_lms_db';
-    $db = new PDO('mysql:host=localhost', 'u613467773_lms_db', '?+Wfrx9D');
+    $database = 'lms_db';
+    $db = new PDO('mysql:host=localhost', 'root', '');
     $query = "CREATE DATABASE IF NOT EXISTS $database";
-   
+
     try {
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $db->exec($query);
