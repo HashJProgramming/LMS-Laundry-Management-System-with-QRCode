@@ -106,8 +106,8 @@
                                         <table class="table table-striped my-0" id="dataTable">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
                                                     <th>Name</th>
+                                                    <th>Unit</th>
                                                     <th>Price</th>
                                                     <th>Date Created</th>
                                                     <th class="text-center">Options</th>
@@ -144,7 +144,19 @@
                 <div class="modal-body">
                     <form action="functions/add-price.php" method="post">
                         <input class="form-control" type="text" name="type" placeholder="Name" style="margin-bottom: 15px;" required="">
-                        <input class="form-control" type="number" name="price" placeholder="Price" required="" min="1" value="1">
+                        <div class="row">
+                            <div class="col">
+                                <input class="form-control" type="number" name="price" placeholder="Price" required="" min="1">
+                            </div>
+                            <div class="col">
+                            <select class="form-select" name="unit">
+                                <optgroup label="Select">
+                                    <option value="Load">LOAD</option>
+                                    <option value="Kg">KG/KILO</option>
+                                </optgroup>
+                            </select>
+                            </div>
+                        </div>
                     
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>
@@ -164,7 +176,19 @@
                     <form action="functions/update-price.php" method="post">
                         <input type="hidden" name="data_id">
                         <input class="form-control" type="text" name="type" placeholder="Name" style="margin-bottom: 15px;" required="">
-                        <input class="form-control" type="number" name="price" placeholder="Price" required="">
+                        <div class="row">
+                            <div class="col">
+                                <input class="form-control" type="number" name="price" placeholder="Price" required="" min="1">
+                            </div>
+                            <div class="col">
+                            <select class="form-select" name="unit">
+                                <optgroup label="Select">
+                                    <option value="Load">LOAD</option>
+                                    <option value="Kg">KG/KILO</option>
+                                </optgroup>
+                            </select>
+                            </div>
+                        </div>
                     
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Save</button></div>

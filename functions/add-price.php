@@ -2,6 +2,7 @@
 include_once 'connection.php';
 
 $name = $_POST['type'];
+$unit = $_POST['unit'];
 $price = $_POST['price'];
 
 $sql = "SELECT * FROM prices WHERE name = :name";
@@ -14,9 +15,10 @@ if ($stmt->rowCount() > 0) {
     exit;
 }
 
-$sql = "INSERT INTO prices (name, price) VALUES (:name, :price)";
+$sql = "INSERT INTO prices (name, unit, price) VALUES (:name, :unit, :price)";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':name', $name);
+$stmt->bindParam(':unit', $unit);
 $stmt->bindParam(':price', $price);
 $stmt->execute();
 

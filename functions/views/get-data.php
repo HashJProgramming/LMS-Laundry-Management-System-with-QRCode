@@ -42,7 +42,7 @@ function price_list (){
     $name = $row['name'];
     ?>
         
-        <option value="<?php echo $row['id']; ?>"><?php echo $name; ?> | ₱<?php echo $row['price']; ?></option>
+        <option value="<?php echo $row['id']; ?>" data-unit="<?php echo $row['unit']; ?>"><?php echo $name; ?> | ₱<?php echo $row['price']; ?></option>
     <?php
     }
 }

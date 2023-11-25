@@ -63,10 +63,7 @@
                                             <th>Invoice</th>
                                             <th>Customer</th>
                                             <th>User</th>
-                                            <th>KG/Kilo</th>
-                                            <th>Type</th>
                                             <th>Total</th>
-                                            <th>Status</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>

@@ -60,13 +60,9 @@
                                     <thead>
                                         <tr>
                                             <th>Queue </th>
-                                            <th>Invoice</th>
                                             <th>Customer</th>
-                                            <th>Kg/Kilo</th>
-                                            <th>Type & Price</th>
-                                            <th>Total</th>
+                                            <th>Unit</th>
                                             <th>Status</th>
-                                            <th>Date</th>
                                             <th class="text-center">Options</th>
                                         </tr>
                                     </thead>

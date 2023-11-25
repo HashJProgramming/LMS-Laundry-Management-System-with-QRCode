@@ -7,7 +7,7 @@ $get_tracking_url = getHostByName(getHostName()) . dirname($_SERVER['PHP_SELF'])
 function getLaundryReciept(){
     global $db;
     global $id;
-    $sql = "SELECT t.id, t.customer_id, t.user_id, t.total, l.kilo, p.price, p.name, c.fullname
+    $sql = "SELECT t.id, t.customer_id, t.user_id, t.total, l.kilo, p.price, p.name, c.fullname, p.unit
         FROM transactions AS t
         JOIN laundry AS l ON t.id = l.transaction_id 
         JOIN prices AS p ON l.type = p.id
@@ -22,7 +22,7 @@ function getLaundryReciept(){
         ?>
         <tr class="font-monospace">
                     <td class="font-monospace text-start mt-0 mb-0" style="font-size: 10px;"><?= $row['name']?></td>
-                    <th class="font-monospace text-center mt-0 mb-0" style="font-size: 10px;"><?= $row['kilo']?>kg</th>
+                    <th class="font-monospace text-center mt-0 mb-0" style="font-size: 10px;"><?= $row['kilo'].' '.$row['unit']?></th>
                     <th class="font-monospace text-center mt-0 mb-0" style="font-size: 10px;">₱<?= number_format($row['price'], 2)?></th>
                     <td class="font-monospace text-end mt-0 mb-0" style="font-size: 10px;">₱<?= number_format($row['price'] * $row['kilo'], 2)?></td>
                 </tr>
@@ -90,7 +90,7 @@ foreach($result as $row){
     <script src="assets/js/qrious.min.js"></script>
 </head>
 
-<body class="mx-5" onload="printPageAndRedirect()">
+<body class="mx-5" onload="">
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -154,8 +154,8 @@ foreach($result as $row){
         <table class="table table-borderless">
             <thead class="font-monospace">
                 <tr class="font-monospace">
-                    <th class="font-monospace text-start" style="font-size: 12px;"><span><strong>TYPE</strong></span></th>
-                    <th class="font-monospace text-center" style="font-size: 12px;"><span><strong>LOAD</strong></span></th>
+                    <th class="font-monospace text-start" style="font-size: 12px;"><span><strong>LAUNDRY</strong></span></th>
+                    <th class="font-monospace text-center" style="font-size: 12px;"><span><strong></strong></span></th>
                     <th class="font-monospace text-center" style="font-size: 12px;"><span><strong>PRICE</strong></span></th>
                     <th class="font-monospace text-end" style="font-size: 12px;"><span><strong>TOTAL</strong></span></th>
                 </tr>

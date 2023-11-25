@@ -1,8 +1,8 @@
 <?php
-    $database = 'lms_db';
-    $db = new PDO('mysql:host=localhost', 'root', '');
+    $database = 'u613467773_lms_db';
+    $db = new PDO('mysql:host=localhost', 'u613467773_lms_db', '?+Wfrx9D');
     $query = "CREATE DATABASE IF NOT EXISTS $database";
-
+   
     try {
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $db->exec($query);
@@ -22,6 +22,7 @@
             CREATE TABLE IF NOT EXISTS prices (
               id INT PRIMARY KEY AUTO_INCREMENT,
               name VARCHAR(255),
+              unit VARCHAR(255),
               price DECIMAL(10,2),
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )

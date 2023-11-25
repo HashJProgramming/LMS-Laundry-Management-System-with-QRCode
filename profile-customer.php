@@ -5,12 +5,11 @@
         header('Location: customers.php?type=error&message=Customer not found!');
     }
     $customer_id = $_GET['id'];
-$sql = 'SELECT l.id, l.kilo, t.total, l.status, l.created_at, users.username, customers.fullname 
-        FROM laundry AS l 
-        JOIN transactions AS t ON l.transaction_id = t.id
-        JOIN users ON t.user_id = users.id 
-        JOIN customers ON t.customer_id = customers.id 
-        WHERE customer_id = :id';
+$sql = 'SELECT t.id, t.total, t.created_at, u.username, c.fullname 
+    FROM transactions AS t 
+    JOIN customers AS c ON t.customer_id = c.id
+    JOIN users AS u ON t.user_id = u.id 
+    WHERE t.status = "completed" AND customer_id = :id';
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':id', $customer_id);
 $stmt->execute();
@@ -89,9 +88,7 @@ $customer_fullname = $info['fullname'];
                                             <th>ID</th>
                                             <th>Customer</th>
                                             <th>User</th>
-                                            <th>KG/Kilo</th>
                                             <th>Total</th>
-                                            <th>Status</th>
                                             <th>Date</th>
                                         </tr>
                                     </thead>
@@ -100,27 +97,11 @@ $customer_fullname = $info['fullname'];
 
                                                                                     
                                         foreach ($results as $row) {
-                                            if($row['status'] == 0){
-                                                $status = 'Pending';
-                                            }else if($row['status'] == 1){
-                                                $status = 'Processing';
-                                            }else if($row['status'] == 2){
-                                                $status = 'Folding';
-                                            }else if($row['status'] == 3){
-                                                $status = 'Ready for Pickup';
-                                            }else if($row['status'] == 4){
-                                                $status = 'Claimed';
-                                            }else{
-                                                $status = 'Unknown';
-                                            }
-
                                             echo '<tr>';
-                                            echo '<td>' . $row['id'] . '</td>';
+                                            echo '<td><a class="mx-1 text-decoration-none" target="_blank" href="reciept.php?id='.$row['id'].'&type=view"><i class="fas fa-print" style="font-size: 20px;"></i> '.$row['id'].'</a></td>';
                                             echo '<td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">' . $row['fullname'] . '</td>';
                                             echo '<td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/profile.png">' . $row['username'] . '</td>';
-                                            echo '<td>' . $row['kilo'] . '</td>';
                                             echo '<td>₱' . number_format($row['total'], 2) . '</td>';
-                                            echo '<td>' . $status. '</td>';
                                             echo '<td>' . $row['created_at'] . '</td>';
                                             echo '</tr>';
                                         }

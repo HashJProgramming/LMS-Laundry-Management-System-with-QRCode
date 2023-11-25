@@ -186,8 +186,9 @@
                                         <table class="table table-striped my-0" id="dataTable">
                                             <thead>
                                                 <tr>
-                                                    <th>Kilo</th>
-                                                    <th>Type</th>
+                                                    <th>Unit</th>
+                                                    <th>Laundry</th>
+                                                    <th>Total</th>
                                                     <th class="text-center">Options</th>
                                                 </tr>
                                             </thead>
@@ -244,12 +245,13 @@
                     <form action="functions/add-laundry.php" method="post">
                         <div class="row">
                             <div class="col">
-                                <div class="mb-3"><label class="form-label" ><strong>Kg/Kilo</strong></label>
-                                <input class="form-control" type="number" value="1" id="kg" placeholder="Kg/Kilogram" name="kilo" min="1" pattern="\d+"></div>
+                                <div class="mb-3"><label class="form-label" ><strong name="type_text">Unit</strong></label>
+                                <input class="form-control" type="number" id="kg" name="kilo" min="1" pattern="\d+"></div>
                             </div>
                             <div class="col">
                                 <div class="mb-3"><label class="form-label"><strong>Type</strong></label><select id="type" class="form-select" name="type">
-                                        <optgroup label="Select Type">
+                                        <optgroup label="SELECT">
+                                            <option value="">SELECT UNIT</option>
                                         <?php price_list() ?>
                                         </optgroup>
                                     </select></div>
@@ -261,60 +263,8 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="laundry-add">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Laundry</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="functions/add-laundry.php" method="post">
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label" ><strong>Kg/Kilo</strong></label>
-                                <input class="form-control" type="number" value="1" id="kg" placeholder="Kg/Kilogram" name="kilo" min="1" pattern="\d+"></div>
-                            </div>
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>Type</strong></label><select id="type" class="form-select" name="type">
-                                        <optgroup label="Select Type">
-                                        <?php price_list() ?>
-                                        </optgroup>
-                                    </select></div>
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Add</button></div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="laundry-add">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Laundry</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="functions/add-laundry.php" method="post">
-                        <div class="row">
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label" ><strong>Kg/Kilo</strong></label>
-                                <input class="form-control" type="number" value="1" id="kg" placeholder="Kg/Kilogram" name="kilo" min="1" pattern="\d+"></div>
-                            </div>
-                            <div class="col">
-                                <div class="mb-3"><label class="form-label"><strong>Type</strong></label><select id="type" class="form-select" name="type">
-                                        <optgroup label="Select Type">
-                                        <?php price_list() ?>
-                                        </optgroup>
-                                    </select></div>
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Add</button></div>
-                </form>
-            </div>
-        </div>
-    </div>
+    
+  
     <div class="modal fade" role="dialog" tabindex="-1" id="remove">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -463,6 +413,12 @@
             $('input[name="id"]').val(id);
             $('input[name="kilo"]').val(kilo);
             $('input[name="type"]').val(type);
+        });
+
+        $('select[name="type"]').on('change', function() {
+            var unit = $(this).find('option:selected').data('unit');
+            $('input[name="kilo"]').val(1);
+            $('strong[name="type_text"]').text(unit);
         });
     </script>
 </body>
