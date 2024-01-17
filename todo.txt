@@ -1,0 +1,9 @@
+[✅] 1. Naay mabutang nga processing before mo proceed sa washing, folding and ect.
+[✅] 2. Ang printed Receipt with QR Code, Dapat duha ang e-print para sa basket ang isa
+[✅] 3. Dapat naay search box inig select sa customer
+[✅] 4. Stock In & Out Chart (Graph) - Dashboard
+[✅] 5. Dapat naay QR Code ang Tracking incase mabasa ang reciept sa customer
+[✅] 6. Dapat naay date & time timeline sa tracking
+
+Debug - ✅
+Done - ✅

@@ -203,6 +203,30 @@ foreach($result as $row){
             </tbody>
         </table>
     </div>
+    <!-- BASKET QRCODE -->
+    
+    <div class="table-responsive mt-5">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="font-monospace text-center" style="color: var(--bs-gray-900);font-size: 13px;">
+                        <img src="assets/img/washing-clothes.gif" width="40">&nbsp;Laundry Management System<br>
+                        <span style="font-weight: normal !important;">Street Unknown, Pagadian City</span><br>
+                        <span style="font-weight: normal !important;">Phone (+63) 000-000-000</span><br>
+                        <span style="font-weight: normal !important;">Date: <?php echo date('Y-m-d')?></span><br>
+                        <canvas class="mt-1 mb-2 text-center w-100" id="qr-code-basket"></canvas>
+                        <h1 class="display-1">BASKET QRCODE</h1>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr></tr>
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- END BASKET QRCODE -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.dataTables.min.js"></script>
@@ -218,13 +242,25 @@ foreach($result as $row){
     <script>
         $(document) .ready(function() {
             (function() {
-            var qr = new QRious({
+                var qr = new QRious({
                         element: document.getElementById('qr-code'),
                         size: 150,
                         value: '<?php echo $get_tracking_url; ?>'
                     });
+                var qr = new QRious({
+                        element: document.getElementById('qr-code-basket'),
+                        size: 350,
+                        value: '<?php echo $get_tracking_url; ?>'
+                    });
                 })();
-
+            
+            // $('.qr-code').each(function() {
+            //     var qr = new QRious({
+            //         element: this,
+            //         size: 150,
+            //         value: '<?php echo $get_tracking_url; ?>'
+            //     });
+            // });
         } );
             function printPageAndRedirect() {
                 setTimeout(function() {

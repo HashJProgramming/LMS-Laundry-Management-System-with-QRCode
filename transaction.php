@@ -48,6 +48,7 @@
     <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/css/bs-theme-overrides.css">
     <link rel="stylesheet" href="assets/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-select.min.css">
 </head>
 
 <body id="page-top">
@@ -371,6 +372,7 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/bootstrap-select.min.js"></script>
     <script src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/dataTables.bootstrap5.min.js"></script>
     <script src="assets/js/dataTables.buttons.min.js"></script>

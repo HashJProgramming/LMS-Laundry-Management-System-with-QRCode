@@ -9,7 +9,7 @@ include_once 'functions/views/get-data.php';
             </div>
             <div class="modal-body">
                 <form action="functions/transaction.php" method="post">
-                    <div class="mb-3"><label class="form-label" for="first_name"><strong>Select Customer</strong></label><select class="form-select" name="id">
+                    <div class="mb-3"><label class="form-label" for="first_name"><strong>Select Customer</strong></label><select class="selectpicker select" data-live-search="true" name="id">
                             <optgroup label="Select Customer">
                                 <?php customer_list(); ?>
                             </optgroup>

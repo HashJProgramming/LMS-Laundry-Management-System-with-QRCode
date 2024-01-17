@@ -5,7 +5,7 @@ $sql = 'SELECT l.status, l.id AS laundry_id, l.kilo, p.price, p.name, p.unit, t.
         JOIN prices AS p ON l.type = p.id
         JOIN transactions AS t ON l.transaction_id = t.id
         JOIN customers AS c ON t.customer_id = c.id
-        WHERE l.status > 0 AND l.status < 4';
+        WHERE l.status >= 0 AND l.status < 4';
 
 $stmt = $db->prepare($sql);
 $stmt->execute();
