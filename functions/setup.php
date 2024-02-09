@@ -62,6 +62,7 @@
             date1 DATETIME,
             date2 DATETIME,
             date3 DATETIME,
+            date4 DATETIME,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
             FOREIGN KEY (transaction_id) REFERENCES transactions(id) ON DELETE CASCADE,
             FOREIGN KEY (type) REFERENCES prices(id) ON DELETE CASCADE
