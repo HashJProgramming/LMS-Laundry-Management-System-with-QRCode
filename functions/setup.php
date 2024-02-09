@@ -44,6 +44,7 @@
               user_id INT,
               customer_id INT,
               total DECIMAL(10,2),
+              amount DECIMAL(10,2),
               status VARCHAR(255),
               created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
               FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,

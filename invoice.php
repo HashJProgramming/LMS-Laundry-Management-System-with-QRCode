@@ -52,7 +52,7 @@ function getItemsReciept(){
     }
 }
 
-$sql = "SELECT t.id, t.total, l.kilo, p.price, c.fullname
+$sql = "SELECT t.id, t.total, l.kilo, p.price, t.amount, c.fullname
 FROM transactions AS t
 JOIN laundry AS l ON t.id = l.transaction_id 
 JOIN prices AS p ON l.type = p.id
@@ -69,6 +69,7 @@ $customer = '';
 foreach($result as $row){
     $total += $row['price'] * $row['kilo'];
     $customer = $row['fullname'];
+    $amount = $row['amount'];
 }
 
 
@@ -90,7 +91,7 @@ foreach($result as $row){
     <script src="assets/js/qrious.min.js"></script>
 </head>
 
-<body class="mx-5" onload="">
+<body class="mx-5">
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -197,12 +198,32 @@ foreach($result as $row){
                 <tr class="font-monospace">
                     <th class="font-monospace text-end"><strong>TOTAL</strong>&nbsp;<strong>₱<?php echo number_format($total, 2); ?></strong></th>
                 </tr>
+                <tr class="font-monospace">
+                    <th class="font-monospace text-end"><strong>AMOUNT</strong>&nbsp;<strong>₱<?php echo number_format($amount, 2); ?></strong></th>
+                </tr>
+                <tr class="font-monospace">
+                    <th class="font-monospace text-end"><strong>CHANGES</strong>&nbsp;<strong>₱<?php echo number_format($amount - $total, 2); ?></strong></th>
+                </tr>
             </thead>
             <tbody>
                 <tr></tr>
             </tbody>
         </table>
-    </div>
+            <table class="table table-borderless">
+                <thead class="font-monospace">
+                    <tr class="font-monospace">
+                        <th class="font-monospace text-center"><strong class="text-danger">**** PLEASE BRING THE RECIEPT TO CLAIM YOUR LAUNDRY ****</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr></tr>
+                </tbody>
+            </table>
+        </div>
+    <!-- BASKET QRCODE -->
+    
+    
+    <!-- END BASKET QRCODE -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.dataTables.min.js"></script>
@@ -218,22 +239,22 @@ foreach($result as $row){
     <script>
         $(document) .ready(function() {
             (function() {
-            var qr = new QRious({
+                var qr = new QRious({
                         element: document.getElementById('qr-code'),
                         size: 150,
                         value: '<?php echo $get_tracking_url; ?>'
                     });
                 })();
-
+            
+            // $('.qr-code').each(function() {
+            //     var qr = new QRious({
+            //         element: this,
+            //         size: 150,
+            //         value: '<?php echo $get_tracking_url; ?>'
+            //     });
+            // });
         } );
-            function printPageAndRedirect() {
-                setTimeout(function() {
-                    window.setTimeout(function() {
-                        window.print();
-                        window.location.href = '<?php if(isset($_GET['type'])){ echo 'tracking.php?id='.$_GET['id']; }?>';
-                    }, 500);
-                }, 500);
-            }
+            
             
     </script>
 </body>

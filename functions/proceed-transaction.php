@@ -59,16 +59,17 @@ foreach ($results as $row) {
 }
 
 echo $total_price;
-
+$amount = $_POST['amount'];
 // $sql = "UPDATE laundry SET status = 1 WHERE transaction_id = :id AND status = 0";
 // $stmt = $db->prepare($sql);
 // $stmt->bindParam(':id', $transaction_id);
 // $stmt->execute();
 
-$sql = "UPDATE transactions SET total = :total, status = 'completed' WHERE id = :id AND status = 'pending'";
+$sql = "UPDATE transactions SET total = :total, amount = :amount, status = 'completed' WHERE id = :id AND status = 'pending'";
 $stmt = $db->prepare($sql);
 $stmt->bindParam(':total', $total_price);
 $stmt->bindParam(':id', $transaction_id);
+$stmt->bindParam(':amount', $amount);
 $stmt->execute();
 
 generate_logs('New Pending Transaction', $_SESSION['id'].' added a new pending transaction');

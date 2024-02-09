@@ -52,7 +52,7 @@ function getItemsReciept(){
     }
 }
 
-$sql = "SELECT t.id, t.total, l.kilo, p.price, c.fullname
+$sql = "SELECT t.id, t.total, l.kilo, p.price, t.amount, c.fullname
 FROM transactions AS t
 JOIN laundry AS l ON t.id = l.transaction_id 
 JOIN prices AS p ON l.type = p.id
@@ -69,6 +69,7 @@ $customer = '';
 foreach($result as $row){
     $total += $row['price'] * $row['kilo'];
     $customer = $row['fullname'];
+    $amount = $row['amount'];
 }
 
 
@@ -197,12 +198,28 @@ foreach($result as $row){
                 <tr class="font-monospace">
                     <th class="font-monospace text-end"><strong>TOTAL</strong>&nbsp;<strong>₱<?php echo number_format($total, 2); ?></strong></th>
                 </tr>
+                <tr class="font-monospace">
+                    <th class="font-monospace text-end"><strong>AMOUNT</strong>&nbsp;<strong>₱<?php echo number_format($amount, 2); ?></strong></th>
+                </tr>
+                <tr class="font-monospace">
+                    <th class="font-monospace text-end"><strong>CHANGES</strong>&nbsp;<strong>₱<?php echo number_format($amount - $total, 2); ?></strong></th>
+                </tr>
             </thead>
             <tbody>
                 <tr></tr>
             </tbody>
         </table>
-    </div>
+        <table class="table table-borderless">
+                <thead class="font-monospace">
+                    <tr class="font-monospace">
+                        <th class="font-monospace text-center"><strong class="text-danger">**** PLEASE BRING THE RECIEPT TO CLAIM YOUR LAUNDRY ****</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr></tr>
+                </tbody>
+            </table>
+        </div>
     <!-- BASKET QRCODE -->
     
     <div class="table-responsive mt-5">

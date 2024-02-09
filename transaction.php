@@ -353,12 +353,13 @@
                     <h4 class="modal-title">Proceed Transaction</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <p>Are you sure you want to proceed this transaction?</p>
+                    <form action="functions/proceed-transaction.php" method="post">
+                        <p>Are you sure you want to proceed this transaction?</p>
+                        <input type="hidden" name="id" value="<?php echo $id; ?>">
+                        <input type="hidden" name="kilo">
+                        <input type="hidden" name="type">
+                    <div class="mb-3"><label class="form-label" for="amount"><strong>Amount</strong></label><input class="form-control" type="number" placeholder="Amount" name="amount" value="<?=$total_price?>" min="<?=$total_price?>" required></div>
                 </div>
-                <form action="functions/proceed-transaction.php" method="post">
-                    <input type="hidden" name="id" value="<?php echo $id; ?>">
-                    <input type="hidden" name="kilo">
-                    <input type="hidden" name="type">
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">No</button><button class="btn btn-primary" type="submit">Yes</button></div>
                 </form>
             </div>
